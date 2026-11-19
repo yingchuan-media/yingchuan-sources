@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import ipaddress
 import json
 import re
@@ -9,6 +10,10 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
+HEALTH_ARCHIVE = "archive/unavailable.json"
+UNAVAILABLE_PREFIX = "不可用 "
+ARCHIVE_DAYS = 7
+SCHEDULE_TZ = datetime.timezone(datetime.timedelta(hours=8))
 GROUPS = {
     "film-tv": "影视",
     "short-drama": "短剧",
@@ -52,10 +57,10 @@ def unique_object(pairs):
     return result
 
 
-def read_json(path):
+def read_json(path, limit=2 * 1024 * 1024):
     body = path.read_bytes()
-    if len(body) > 2 * 1024 * 1024:
-        raise ValueError("Subscription exceeds client document limit")
+    if len(body) > limit:
+        raise ValueError(f"JSON document exceeds size limit: {path.name}")
     return json.loads(body.decode("utf-8-sig"), object_pairs_hook=unique_object)
 
 
@@ -88,7 +93,8 @@ def source_identity(site):
         raise ValueError("Invalid source schema")
     if not isinstance(site.get("name"), str) or not site["name"].strip():
         raise ValueError("Source name is required")
-    if site["name"] != clean_source_name(site["name"]):
+    name = site["name"].removeprefix(UNAVAILABLE_PREFIX)
+    if not name or name == UNAVAILABLE_PREFIX.strip() or name.startswith(UNAVAILABLE_PREFIX) or name != clean_source_name(name):
         raise ValueError("Source name must use plain words and numbers without decoration or latency")
     parsed = public_url(site.get("api"))
     if "disabled" in site and type(site["disabled"]) is not bool:
@@ -126,6 +132,54 @@ def source_identity(site):
     return "api", address, detail
 
 
+def parse_date(value):
+    date = datetime.date.fromisoformat(value)
+    if date.isoformat() != value:
+        raise ValueError("Invalid health archive date")
+    return date
+
+
+def parse_time(value):
+    timestamp = datetime.datetime.fromisoformat(value)
+    if timestamp.utcoffset() is None:
+        raise ValueError("Missing health check time zone")
+    return timestamp
+
+
+def read_archive(root):
+    path = root / HEALTH_ARCHIVE
+    if path.is_symlink():
+        raise ValueError("Health archive must be a regular repository file")
+    state = read_json(path, 16 * 1024 * 1024)
+    if (not isinstance(state, dict) or set(state) != {"last_checked_at", "pending", "archived"}
+            or not isinstance(state["pending"], dict) or not isinstance(state["archived"], list)):
+        raise ValueError("Invalid health archive envelope")
+    last_check = state["last_checked_at"]
+    if last_check is not None:
+        last_day = parse_time(last_check).astimezone(SCHEDULE_TZ).date()
+    elif state["pending"] or state["archived"]:
+        raise ValueError("Missing health archive check time")
+    for entry in state["pending"].values():
+        if (not isinstance(entry, dict) or set(entry) != {"fingerprint", "first_failed", "last_failed"}
+                or not isinstance(entry["fingerprint"], str)
+                or not re.fullmatch(r"[0-9a-f]{64}", entry["fingerprint"])):
+            raise ValueError("Invalid pending health record")
+        first, last = parse_date(entry["first_failed"]), parse_date(entry["last_failed"])
+        if last != last_day or not 0 <= (last - first).days < ARCHIVE_DAYS - 1:
+            raise ValueError("Invalid pending failure period")
+    for entry in state["archived"]:
+        if (not isinstance(entry, dict)
+                or set(entry) != {"group", "key", "site", "first_failed", "last_failed"}
+                or not isinstance(entry["group"], str) or entry["group"] not in GROUPS
+                or not isinstance(entry["key"], str) or not entry["key"]):
+            raise ValueError("Invalid archived health record")
+        first, last = parse_date(entry["first_failed"]), parse_date(entry["last_failed"])
+        if last > last_day or (last - first).days != ARCHIVE_DAYS - 1:
+            raise ValueError("Invalid archived failure period")
+        source_identity(entry["site"])
+    return state
+
+
 def check(root=ROOT):
     root = Path(root).resolve()
     expected = {f"subscriptions/{group}.json" for group in GROUPS}
@@ -135,8 +189,10 @@ def check(root=ROOT):
         if path.is_file() and path.suffix.lower() == ".json"
         and ".git" not in path.relative_to(root).parts
     }
-    if actual != expected:
-        raise ValueError(f"Only the four subscription JSON files are allowed; missing={sorted(expected - actual)}, extra={sorted(actual - expected)}")
+    allowed = expected | {HEALTH_ARCHIVE}
+    if actual != allowed:
+        raise ValueError(f"Expected four subscription JSON files and {HEALTH_ARCHIVE}; missing={sorted(allowed - actual)}, extra={sorted(actual - allowed)}")
+    read_archive(root)
     keys, identities, summary = set(), set(), {}
     native_sources = 0
     names = defaultdict(list)
@@ -161,7 +217,7 @@ def check(root=ROOT):
                 raise ValueError(f"Duplicate source across subscriptions: {key}")
             keys.add(key)
             identities.add(identity)
-            names[site["name"]].append(f"{group}:{key}")
+            names[site["name"].removeprefix(UNAVAILABLE_PREFIX)].append(f"{group}:{key}")
         summary[name] = {"sources": len(sites), "disabled": 0}
     return {"status": "PASSED", "files": len(expected), "sources": len(keys), "native_sources": native_sources, "groups": summary,
             "duplicate_names": {name: entries for name, entries in names.items() if len(entries) > 1}}

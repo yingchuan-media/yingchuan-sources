@@ -13,6 +13,9 @@ class SubscriptionTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         (self.root / "subscriptions").mkdir()
+        archive = self.root / checks.HEALTH_ARCHIVE
+        archive.parent.mkdir()
+        archive.write_text('{"last_checked_at":null,"pending":{},"archived":[]}', encoding="utf-8")
         self.groups = dict(checks.GROUPS)
         self.documents = {
             group: {"cache_time": 7200, "api_site": {
@@ -40,7 +43,7 @@ class SubscriptionTests(unittest.TestCase):
             checks.check(self.root)
 
     def test_extra_json_anywhere_is_rejected(self):
-        for relative in ("config.json", "subscriptions/index.json", "archive/old.json", "audits/old.JSON"):
+        for relative in ("404.json", "config.json", "subscriptions/index.json", "archive/old.json", "audits/old.JSON"):
             with self.subTest(relative=relative):
                 path = self.root / relative
                 path.parent.mkdir(exist_ok=True)
@@ -48,6 +51,15 @@ class SubscriptionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "extra"):
                     self.validate()
                 path.unlink()
+
+    def test_health_archive_is_required_and_validated(self):
+        path = self.root / checks.HEALTH_ARCHIVE
+        path.unlink()
+        with self.assertRaisesRegex(ValueError, "missing"):
+            self.validate()
+        path.write_text('{"last_checked_at":null,"pending":{"key":{}},"archived":[]}', encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "Missing health archive check time"):
+            self.validate()
 
     def test_inventory_additions_and_removals_update_counts(self):
         self.documents["film-tv"]["api_site"]["additional"] = {"name": "Extra", "api": "https://other.example.test/vod"}

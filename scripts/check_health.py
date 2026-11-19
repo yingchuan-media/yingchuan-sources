@@ -19,7 +19,8 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
 
-from check_subscriptions import BUILTIN_ADAPTERS, GROUPS, ROOT, check, public_url, read_json
+from check_subscriptions import BUILTIN_ADAPTERS, GROUPS, HEALTH_ARCHIVE, ROOT, check, public_url, read_json
+from source_health_archive import update_sources
 
 
 TEXT_LIMIT = 2 * 1024 * 1024
@@ -403,12 +404,14 @@ def escape(value):
     return html.escape(value, quote=True).replace("|", "&#124;").replace("`", "&#96;").replace("[", "&#91;").replace("]", "&#93;").replace("*", "&#42;").replace("_", "&#95;")
 
 
-def render_report(rows, checked_at, decoder_version):
+def render_report(rows, checked_at, decoder_version, archived_count=0):
     passed = sum(all(row[field].status == "ok" for field in FIELDS) for row in rows)
     failed = sum(any(row[field].status == "fail" for field in FIELDS) for row in rows)
     lines = [START, "", f"检测时间：{escape(checked_at)}；共 {len(rows)} 项，四项通过 {passed} 项，含失败 {failed} 项。",
              "", f"解码工具：{escape(decoder_version)}。延迟为运行节点的目录请求耗时（含 DNS、TLS 与正文），不代表本地延迟。",
-             "", "✅ 通过 · ❌ 失败 · ⚪ 未验证。封面仅检查 HEAD；播放仅抽样一条线路的第一集和一个片段，首帧通过不保证整片、其他线路、音轨或设备可播。未验证和失败都不会禁用来源。", ""]
+             "", "✅ 通过 · ❌ 失败 · ⚪ 未验证。封面仅检查 HEAD；播放仅抽样一条线路的第一集和一个片段，首帧通过不保证整片、其他线路、音轨或设备可播。", ""]
+    if archived_count:
+        lines += [f"本次从订阅移出 {archived_count} 项，见[不可用站源归档]({HEALTH_ARCHIVE})。", ""]
     for group, name in GROUPS.items():
         count = sum(row["group"] == group for row in rows)
         lines += [f"### {name}（{count} 项）", "", "| 站点 / 稳定键 | 目录 | 封面 | 搜索 | 能否播放 | 目录延迟 |",
@@ -438,11 +441,11 @@ def inventory_report(sites):
     return "\n".join(lines)
 
 
-def write_report(path, rows, checked_at, decoder_version, summary, sites=None):
+def write_report(path, rows, checked_at, decoder_version, summary, sites=None, archived_count=0):
     original = path.read_text(encoding="utf-8")
     if original.count(START) != original.count(END) or original.count(START) > 1:
         raise ValueError("README 检测区标记损坏")
-    report = render_report(rows, checked_at, decoder_version)
+    report = render_report(rows, checked_at, decoder_version, archived_count)
     if START in original:
         begin, end = original.index(START), original.index(END)
         if end < begin:
@@ -468,12 +471,40 @@ def write_report(path, rows, checked_at, decoder_version, summary, sites=None):
         Path(temporary).unlink(missing_ok=True)
 
 
+def prepare_publication(root, destination, rows, checked_at, decoder_version, summary):
+    destination = destination.resolve()
+    if destination.is_relative_to(root.resolve()) or destination.exists():
+        raise ValueError("Publication output must be a new directory outside the checkout")
+    documents = {group: read_json(root / "subscriptions" / f"{group}.json") for group in GROUPS}
+    state, archived = update_sources(root, documents, rows, checked_at)
+    sites = [(group, key, site) for group, document in documents.items()
+             for key, site in document["api_site"].items()]
+    retained = {(group, key) for group, key, _ in sites}
+    active_rows = [row for row in rows if (row["group"], row["key"]) in retained]
+    with tempfile.TemporaryDirectory(prefix="source-health-", dir=destination.parent) as temporary:
+        candidate = Path(temporary) / "publication"
+        (candidate / "subscriptions").mkdir(parents=True)
+        (candidate / HEALTH_ARCHIVE).parent.mkdir()
+        files = {f"subscriptions/{group}.json": document for group, document in documents.items()}
+        files[HEALTH_ARCHIVE] = state
+        for relative, value in files.items():
+            (candidate / relative).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n",
+                                             encoding="utf-8", newline="\n")
+        check(candidate)
+        shutil.copyfile(root / "README.md", candidate / "README.md")
+        write_report(candidate / "README.md", active_rows, checked_at, decoder_version, summary,
+                     sites=sites, archived_count=len(archived))
+        candidate.rename(destination)
+    return len(archived)
+
+
 def main():
-    parser = argparse.ArgumentParser(description="检测四份站源订阅并原子更新 README，不修改订阅。")
+    parser = argparse.ArgumentParser(description="检测四份站源订阅，更新 README 或生成发布候选。")
     parser.add_argument("--initialize", action="store_true", help="仅生成未检测表格，不访问网络")
     parser.add_argument("--workers", type=int, choices=range(1, 9), default=6)
     parser.add_argument("--timeout", type=int, choices=range(2, 16), default=8)
     parser.add_argument("--summary", type=Path, help="同时输出 GitHub Actions Markdown 摘要")
+    parser.add_argument("--publication-dir", type=Path, help="将候选订阅、归档及 README 写入工作树外的新目录")
     parser.add_argument("--native-probe", type=Path, default=os.environ.get("YINGCHUAN_NATIVE_PROBE"), help="客户端原生协议检测程序")
     options = parser.parse_args()
     check(ROOT)
@@ -483,6 +514,8 @@ def main():
     if not options.initialize and any(site.get("adapter") for _, _, site in sites) and not options.native_probe:
         raise RuntimeError("订阅含原生协议来源，必须准备 --native-probe；未覆盖旧报告")
     executable = shutil.which("ffmpeg")
+    if options.publication_dir and (options.initialize or not executable):
+        parser.error("--publication-dir requires an online check with FFmpeg")
     version = "未安装 FFmpeg"
     if options.initialize:
         rows = [initial_result(*site) for site in sites]
@@ -507,8 +540,12 @@ def main():
             futures = [pool.submit(run_site, site) for site in sites]
             rows = [future.result() for future in futures]
         checked_at = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
-    write_report(ROOT / "README.md", rows, checked_at, version, options.summary, sites=sites)
-    print(f"已更新 {len(rows)} 项检测信息；订阅配置未修改。")
+    if options.publication_dir:
+        archived = prepare_publication(ROOT, options.publication_dir, rows, checked_at, version, options.summary)
+        print(f"已生成 {len(rows)} 项检测的发布候选，其中 {archived} 项转入归档。")
+    else:
+        write_report(ROOT / "README.md", rows, checked_at, version, options.summary, sites=sites)
+        print(f"已更新 {len(rows)} 项检测信息；订阅配置未修改。")
     return 0
 
 

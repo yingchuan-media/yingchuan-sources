@@ -93,18 +93,18 @@ jobs:
         run: |
           python -B scripts/check_subscriptions.py
           python -B -m unittest discover -s scripts -p 'test_*.py'
-      - name: Check sources and update report
-        run: python -B scripts/check_health.py --summary "$GITHUB_STEP_SUMMARY"
-      - name: Confirm subscriptions remain unchanged
-        run: git diff --exit-code -- subscriptions
+      - name: Check sources and prepare publication
+        run: |
+          python -B scripts/check_health.py --summary "$GITHUB_STEP_SUMMARY" --publication-dir "$RUNNER_TEMP/source-health-publication"
+          git diff --exit-code -- README.md subscriptions archive
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: source-health-readme
-          path: README.md
+          name: source-health-publication
+          path: ${{ runner.temp }}/source-health-publication/
           if-no-files-found: error
           retention-days: 7
 
-  update-readme:
+  publish-health:
     needs: probe
     if: github.repository == 'yingchuan-media/yingchuan-sources' && github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-24.04
@@ -117,19 +117,27 @@ jobs:
           ref: ${{ github.sha }}
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: source-health-readme
+          name: source-health-publication
           path: ${{ runner.temp }}/source-health
-      - name: Commit only the README report
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Commit the report, subscriptions and archive together
         env:
-          REPORT_PATH: ${{ runner.temp }}/source-health/README.md
+          PUBLICATION: ${{ runner.temp }}/source-health
           TARGET_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
-          cp -- "$REPORT_PATH" README.md
-          git add -- README.md
+          cp -- "$PUBLICATION/README.md" README.md
+          for group in film-tv short-drama animation unknown; do
+            cp -- "$PUBLICATION/subscriptions/$group.json" "subscriptions/$group.json"
+          done
+          cp -- "$PUBLICATION/archive/unavailable.json" archive/unavailable.json
+          python -B scripts/check_subscriptions.py
+          git add -- README.md subscriptions/{film-tv,short-drama,animation,unknown}.json archive/unavailable.json
           if git diff --cached --quiet; then
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git -c core.hooksPath=/dev/null commit -m 'chore: update daily source health report'
+          git -c core.hooksPath=/dev/null commit -m 'chore: update source health and subscriptions'
           git push origin "HEAD:refs/heads/$TARGET_BRANCH"

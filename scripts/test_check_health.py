@@ -193,6 +193,9 @@ class HealthTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             (root / "subscriptions").mkdir()
+            archive = root / subscriptions.HEALTH_ARCHIVE
+            archive.parent.mkdir()
+            archive.write_text('{"last_checked_at":null,"pending":{},"archived":[]}', encoding="utf-8")
             (root / "README.md").write_text("Keep manual instructions\n" + health.INVENTORY_START + "\n" + health.INVENTORY_END + "\n", encoding="utf-8")
             for group in groups:
                 (root / "subscriptions" / f"{group}.json").write_text(json.dumps({
