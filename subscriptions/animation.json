@@ -1,8 +1,21 @@
 {
   "cache_time": 7200,
   "api_site": {
+    "caiji.moduapi.cc": {
+      "name": "魔都动漫",
+      "api": "https://caiji.moduapi.cc/api.php/provide/vod",
+      "detail": "https://caiji.moduapi.cc"
+    },
+    "tvbox-b7990671ab43eae391b9e2cc": {
+      "name": "34 魔都",
+      "api": "https://caiji.moduapi.cc/api.php/provide/vod"
+    },
+    "yszzq-181": {
+      "name": "魔都动漫资源采集网",
+      "api": "https://www.mdzyapi.com/api.php/provide/vod/at/xml/"
+    },
     "sorani": {
-      "name": "不可用 青空",
+      "name": "【不可用】青空",
       "api": "https://www.sorani.net",
       "adapter": "sorani",
       "native": {
@@ -42,19 +55,6 @@
         ],
         "playbackLine": "anime_jp_m3u8"
       }
-    },
-    "caiji.moduapi.cc": {
-      "name": "魔都动漫",
-      "api": "https://caiji.moduapi.cc/api.php/provide/vod",
-      "detail": "https://caiji.moduapi.cc"
-    },
-    "tvbox-b7990671ab43eae391b9e2cc": {
-      "name": "34 魔都",
-      "api": "https://caiji.moduapi.cc/api.php/provide/vod"
-    },
-    "yszzq-181": {
-      "name": "魔都动漫资源采集网",
-      "api": "https://www.mdzyapi.com/api.php/provide/vod/at/xml/"
     }
   }
 }

@@ -39,13 +39,13 @@ class HealthArchiveTests(unittest.TestCase):
                 **{field: health.Outcome("ok", "fixture") for field in health.FIELDS},
                 **overrides}
 
-    def publish(self, day, row, hour=7):
+    def publish(self, day, *rows, hour=7):
         self.sequence += 1
         target = self.directory / f"publication-{self.sequence}"
         checked_at = datetime.datetime(2026, 11, day, hour,
                                        tzinfo=subscriptions.SCHEDULE_TZ).isoformat()
         original_files = {path: path.read_bytes() for path in self.root.rglob("*") if path.is_file()}
-        archived = health.prepare_publication(self.root, target, [row], checked_at, "fixture", None)
+        archived = health.prepare_publication(self.root, target, rows, checked_at, "fixture", None)
         self.assertTrue(all(path.read_bytes() == body for path, body in original_files.items()))
         self.root = target
         return archived, subscriptions.read_archive(target)
@@ -57,7 +57,7 @@ class HealthArchiveTests(unittest.TestCase):
             self.assertEqual(archived, 0)
             self.assertEqual(state["pending"]["sample"]["first_failed"], "2026-11-01")
             self.assertEqual(subscriptions.read_json(self.subscription(self.root))["api_site"]["sample"],
-                             {**self.site, "name": "不可用 测试站"})
+                             {**self.site, "name": "【不可用】测试站"})
         archived, state = self.publish(7, self.row(catalog=failure))
         self.assertEqual(archived, 1)
         self.assertEqual(state["archived"], [{"group": "film-tv", "key": "sample", "site": self.site,
@@ -66,7 +66,7 @@ class HealthArchiveTests(unittest.TestCase):
         self.assertEqual(subscriptions.check(self.root)["sources"], 0)
         report = (self.root / "README.md").read_text(encoding="utf-8")
         self.assertIn("本次从订阅移出 1 项", report)
-        self.assertNotIn("不可用 测试站", report)
+        self.assertNotIn("【不可用】测试站", report)
 
     def test_recovery_and_client_reproduction_clear_failure_period(self):
         self.publish(1, self.row(catalog=health.Outcome("fail", "HTTP 404")))
@@ -76,7 +76,7 @@ class HealthArchiveTests(unittest.TestCase):
             self.assertEqual(archived, 0)
             self.assertEqual(state["pending"], {})
         self.assertEqual(subscriptions.read_json(self.subscription(self.root))["api_site"]["sample"]["name"],
-                         "不可用 测试站")
+                         "【不可用】测试站")
         self.publish(10, self.row(cover=health.Outcome("fail", "HTTP 404")))
         self.assertEqual(subscriptions.read_json(self.subscription(self.root))["api_site"]["sample"], self.site)
 
@@ -102,7 +102,28 @@ class HealthArchiveTests(unittest.TestCase):
             self.assertEqual(health.update_sources(
                 self.root, {"film-tv": subscriptions.read_json(self.subscription(self.root))},
                 [row], "2026-11-01T07:00:00+08:00")[0]["pending"], {})
-            self.assertEqual(row["name"], "不可用 测试站")
+            self.assertEqual(row["name"], "【不可用】测试站")
+
+    def test_legacy_and_new_labels_are_sorted_at_end_in_subscription_and_report(self):
+        cases = [
+            ("sample", "不可用 测试站", "fail"),
+            ("second", "【不可用】恢复站", "ok"),
+            ("third", "待复验站", "unknown"),
+            ("fourth", "可用站", "ok"),
+        ]
+        sites = {key: {**self.site, "name": name, "api": f"https://{key}.example.test/vod"}
+                 for key, name, _ in cases}
+        self.write(self.subscription(self.root), {"cache_time": 7200, "api_site": sites})
+        rows = [self.row(key=key, catalog=health.Outcome(status, "fixture"))
+                for key, _, status in cases]
+        self.publish(1, *rows)
+        names = list(subscriptions.read_json(self.subscription(self.root))["api_site"].items())
+        self.assertEqual([(key, site["name"]) for key, site in names],
+                         [("second", "恢复站"), ("fourth", "可用站"),
+                          ("sample", "【不可用】测试站"), ("third", "【不可用】待复验站")])
+        report = (self.root / "README.md").read_text(encoding="utf-8")
+        report_rows = [line.split(" | ", 1)[0] for line in report.splitlines() if line.startswith("| ") and " · " in line]
+        self.assertEqual(report_rows, [f"| {site['name']} · {key}" for key, site in names])
 
     def test_incomplete_or_duplicate_result_produces_no_candidate(self):
         for rows in ([], [self.row(), self.row()]):

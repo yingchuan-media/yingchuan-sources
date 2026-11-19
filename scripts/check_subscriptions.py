@@ -11,7 +11,8 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 HEALTH_ARCHIVE = "archive/unavailable.json"
-UNAVAILABLE_PREFIX = "不可用 "
+UNAVAILABLE_PREFIX = "【不可用】"
+LEGACY_UNAVAILABLE_PREFIX = "不可用 "
 ARCHIVE_DAYS = 7
 SCHEDULE_TZ = datetime.timezone(datetime.timedelta(hours=8))
 GROUPS = {
@@ -88,13 +89,20 @@ def public_url(value):
     return parsed
 
 
+def base_source_name(name):
+    for prefix in (UNAVAILABLE_PREFIX, LEGACY_UNAVAILABLE_PREFIX):
+        if name.startswith(prefix):
+            return name[len(prefix):]
+    return name
+
+
 def source_identity(site):
     if not isinstance(site, dict) or set(site) - {"name", "api", "detail", "disabled", "adapter", "native"}:
         raise ValueError("Invalid source schema")
     if not isinstance(site.get("name"), str) or not site["name"].strip():
         raise ValueError("Source name is required")
-    name = site["name"].removeprefix(UNAVAILABLE_PREFIX)
-    if not name or name == UNAVAILABLE_PREFIX.strip() or name.startswith(UNAVAILABLE_PREFIX) or name != clean_source_name(name):
+    name = base_source_name(site["name"])
+    if not name or name == LEGACY_UNAVAILABLE_PREFIX.strip() or name != base_source_name(name) or name != clean_source_name(name):
         raise ValueError("Source name must use plain words and numbers without decoration or latency")
     parsed = public_url(site.get("api"))
     if "disabled" in site and type(site["disabled"]) is not bool:
@@ -217,7 +225,7 @@ def check(root=ROOT):
                 raise ValueError(f"Duplicate source across subscriptions: {key}")
             keys.add(key)
             identities.add(identity)
-            names[site["name"].removeprefix(UNAVAILABLE_PREFIX)].append(f"{group}:{key}")
+            names[base_source_name(site["name"])].append(f"{group}:{key}")
         summary[name] = {"sources": len(sites), "disabled": 0}
     return {"status": "PASSED", "files": len(expected), "sources": len(keys), "native_sources": native_sources, "groups": summary,
             "duplicate_names": {name: entries for name, entries in names.items() if len(entries) > 1}}

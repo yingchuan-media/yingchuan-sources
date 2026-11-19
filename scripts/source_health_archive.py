@@ -2,14 +2,16 @@ import datetime
 import hashlib
 import json
 
-from check_subscriptions import ARCHIVE_DAYS, SCHEDULE_TZ, UNAVAILABLE_PREFIX, parse_date, parse_time, read_archive
+from check_subscriptions import (
+    ARCHIVE_DAYS, SCHEDULE_TZ, UNAVAILABLE_PREFIX, base_source_name, parse_date, parse_time, read_archive,
+)
 
 
 CLIENT_CHECK_HTTP = {"HTTP 401", "HTTP 403", "HTTP 407", "HTTP 429", "HTTP 451"}
 
 
-def base_name(name):
-    return name.removeprefix(UNAVAILABLE_PREFIX)
+def unavailable_last(sites):
+    return dict(sorted(sites.items(), key=lambda item: item[1]["name"].startswith(UNAVAILABLE_PREFIX)))
 
 
 def source_status(row):
@@ -43,7 +45,7 @@ def update_sources(root, documents, rows, checked_at):
         for key, site in list(sites.items()):
             row = by_source[group, key]
             status = source_status(row)
-            name = base_name(site["name"])
+            name = base_source_name(site["name"])
             site["name"] = name if status == "ok" else UNAVAILABLE_PREFIX + name
             row["name"] = site["name"]
             if status != "unavailable":
@@ -63,5 +65,6 @@ def update_sources(root, documents, rows, checked_at):
                 continue
             archived_now.append({"group": group, "key": key, "site": config, **period})
             del sites[key]
+        document["api_site"] = unavailable_last(sites)
     archived.extend(archived_now)
     return {"last_checked_at": checked_at, "pending": pending, "archived": archived}, archived_now

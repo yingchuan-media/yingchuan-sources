@@ -479,8 +479,8 @@ def prepare_publication(root, destination, rows, checked_at, decoder_version, su
     state, archived = update_sources(root, documents, rows, checked_at)
     sites = [(group, key, site) for group, document in documents.items()
              for key, site in document["api_site"].items()]
-    retained = {(group, key) for group, key, _ in sites}
-    active_rows = [row for row in rows if (row["group"], row["key"]) in retained]
+    rows_by_source = {(row["group"], row["key"]): row for row in rows}
+    active_rows = [rows_by_source[group, key] for group, key, _ in sites]
     with tempfile.TemporaryDirectory(prefix="source-health-", dir=destination.parent) as temporary:
         candidate = Path(temporary) / "publication"
         (candidate / "subscriptions").mkdir(parents=True)
