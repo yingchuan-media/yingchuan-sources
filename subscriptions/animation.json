@@ -2,7 +2,7 @@
   "cache_time": 7200,
   "api_site": {
     "sorani": {
-      "name": "青空",
+      "name": "不可用 青空",
       "api": "https://www.sorani.net",
       "adapter": "sorani",
       "native": {

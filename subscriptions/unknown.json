@@ -2,7 +2,7 @@
   "cache_time": 7200,
   "api_site": {
     "dsd": {
-      "name": "帝果",
+      "name": "不可用 帝果",
       "api": "https://www.dsd.com.se",
       "adapter": "dsd",
       "native": {
@@ -20,7 +20,7 @@
       }
     },
     "huangguo-video": {
-      "name": "黄果视频",
+      "name": "不可用 黄果视频",
       "api": "https://huangguo.video",
       "adapter": "huangguo-video",
       "native": {
@@ -36,7 +36,7 @@
       }
     },
     "cloudfront": {
-      "name": "黄果旧版",
+      "name": "不可用 黄果旧版",
       "api": "https://d2pypzndaqisk.cloudfront.net",
       "adapter": "cloudfront",
       "native": {
@@ -80,17 +80,17 @@
       }
     },
     "api.wwzy.tv": {
-      "name": "旺旺资源",
+      "name": "不可用 旺旺资源",
       "api": "https://api.wwzy.tv/api.php/provide/vod",
       "detail": "https://api.wwzy.tv"
     },
     "api_21": {
-      "name": "旺旺短剧",
+      "name": "不可用 旺旺短剧",
       "api": "https://wwzy.tv/api.php/provide/vod",
       "detail": "https://wwzy.tv"
     },
     "aiduanjucc": {
-      "name": "爱短剧",
+      "name": "不可用 爱短剧",
       "api": "https://www.aiduanju.cc/",
       "detail": ""
     },
@@ -105,12 +105,12 @@
       "detail": "https://91md.me"
     },
     "91jpzyw.com": {
-      "name": "91精品",
+      "name": "不可用 91精品",
       "api": "https://91jpzyw.com/api.php/provide/vod",
       "detail": "https://91jpzyw.com"
     },
     "lbapiby.com": {
-      "name": "Alvin",
+      "name": "不可用 Alvin",
       "api": "http://lbapiby.com/api.php/provide/vod",
       "detail": "http://lbapiby.com"
     },
@@ -135,17 +135,17 @@
       "detail": "https://apilsbzy1.com"
     },
     "www.yyzywcj.com": {
-      "name": "优优资源",
+      "name": "不可用 优优资源",
       "api": "https://www.yyzywcj.com/api.php/provide/vod",
       "detail": "https://www.yyzywcj.com"
     },
     "xiaojizy.live": {
-      "name": "小鸡资源",
+      "name": "不可用 小鸡资源",
       "api": "https://api.xiaojizy.live/provide/vod",
       "detail": "https://xiaojizy.live"
     },
     "hsckzy.xyz": {
-      "name": "黄色仓库",
+      "name": "不可用 黄色仓库",
       "api": "https://hsckzy.xyz/api.php/provide/vod",
       "detail": "https://hsckzy.xyz"
     },
@@ -155,7 +155,7 @@
       "detail": "https://apidanaizi.com"
     },
     "jkunzyapi.com": {
-      "name": "JKUN资源",
+      "name": "不可用 JKUN资源",
       "api": "https://jkunzyapi.com/api.php/provide/vod",
       "detail": "https://jkunzyapi.com"
     },
@@ -165,7 +165,7 @@
       "detail": "https://lbapi9.com"
     },
     "Naixxzy.com": {
-      "name": "奶香资源",
+      "name": "不可用 奶香资源",
       "api": "https://Naixxzy.com/api.php/provide/vod",
       "detail": "https://Naixxzy.com"
     },
@@ -185,72 +185,72 @@
       "detail": "https://shayuapi.com"
     },
     "xzytv.com": {
-      "name": "幸资源",
+      "name": "不可用 幸资源",
       "api": "https://xzybb2.com/api.php/provide/vod",
       "detail": "https://xzytv.com"
     },
     "doudouzy.com": {
-      "name": "豆豆资源",
+      "name": "不可用 豆豆资源",
       "api": "https://api.douapi.cc/api.php/provide/vod",
       "detail": "https://doudouzy.com"
     },
     "didizy.com": {
-      "name": "滴滴资源",
+      "name": "不可用 滴滴资源",
       "api": "https://api.ddapi.cc/api.php/provide/vod",
       "detail": "https://didizy.com"
     },
     "heiliaozy.cc": {
-      "name": "黑料资源",
+      "name": "不可用 黑料资源",
       "api": "https://www.heiliaozyapi.com/api.php/provide/vod",
       "detail": "https://heiliaozy.cc"
     },
     "api.bwzym3u8.com": {
-      "name": "百万资源",
+      "name": "不可用 百万资源",
       "api": "https://api.bwzyz.com/api.php/provide/vod",
       "detail": "https://api.bwzym3u8.com"
     },
     "thzy8.me": {
-      "name": "桃花资源",
+      "name": "不可用 桃花资源",
       "api": "https://thzy1.me/api.php/provide/vod",
       "detail": "https://thzy8.me"
     },
     "www.jingpinx.com": {
-      "name": "精品资源",
+      "name": "不可用 精品资源",
       "api": "https://www.jingpinx.com/api.php/provide/vod",
       "detail": "https://www.jingpinx.com"
     },
     "souavzyw.com": {
-      "name": "SouavZY",
+      "name": "不可用 SouavZY",
       "api": "https://api.souavzyw.net/api.php/provide/vod",
       "detail": "https://souavzyw.com"
     },
     "api_57": {
-      "name": "奥斯卡资源",
+      "name": "不可用 奥斯卡资源",
       "api": "https://aosikazy.com/api.php/provide/vod",
       "detail": "https://aosikazy.com"
     },
     "api_60": {
-      "name": "淫水机资源",
+      "name": "不可用 淫水机资源",
       "api": "https://www.xrbsp.com/api/json.php",
       "detail": "https://www.xrbsp.com"
     },
     "api_63": {
-      "name": "白嫖资源",
+      "name": "不可用 白嫖资源",
       "api": "https://www.kxgav.com/api/json.php",
       "detail": "https://www.kxgav.com"
     },
     "api_65": {
-      "name": "美少女资源",
+      "name": "不可用 美少女资源",
       "api": "https://www.msnii.com/api/json.php",
       "detail": "https://www.msnii.com"
     },
     "api_70": {
-      "name": "香奶儿资源",
+      "name": "不可用 香奶儿资源",
       "api": "https://www.gdlsp.com/api/json.php",
       "detail": "https://www.gdlsp.com"
     },
     "api_72": {
-      "name": "黄AV资源",
+      "name": "不可用 黄AV资源",
       "api": "https://www.pgxdy.com/api/json.php",
       "detail": "https://www.pgxdy.com"
     },
@@ -260,22 +260,22 @@
       "detail": ""
     },
     "huangseziy": {
-      "name": "黄色资源",
+      "name": "不可用 黄色资源",
       "api": "https://hsckzy888.com/api.php/provide/vod",
       "detail": ""
     },
     "xibaocaiji": {
-      "name": "细胞采集",
+      "name": "不可用 细胞采集",
       "api": "https://www.xxibaozyw.com/api.php/provide/vod",
       "detail": ""
     },
     "tvbox-d5597ba670618a92b45d158f": {
-      "name": "鸡坤",
+      "name": "不可用 鸡坤",
       "api": "https://jkunzyapi.com/api.php/provide/vod/at/json",
       "disabled": false
     },
     "heitao": {
-      "name": "黑桃",
+      "name": "不可用 黑桃",
       "api": "https://heitaodj.com",
       "adapter": "heitao",
       "disabled": false,
@@ -294,7 +294,7 @@
       }
     },
     "beabox": {
-      "name": "笔盒",
+      "name": "不可用 笔盒",
       "api": "https://bh4066.top",
       "adapter": "beabox",
       "disabled": false,
@@ -319,15 +319,15 @@
       }
     },
     "yszzq-254": {
-      "name": "星夜资源站",
+      "name": "不可用 星夜资源站",
       "api": "https://xyezy.com/api.php/provide/vod/?ac=list"
     },
     "yszzq-233": {
-      "name": "黑料资源网",
+      "name": "不可用 黑料资源网",
       "api": "https://www.heiliaozyapi.com/api.php/provide/vod/"
     },
     "yszzq-185": {
-      "name": "奶香香资源站",
+      "name": "不可用 奶香香资源站",
       "api": "https://Naixxzy.com/api.php/provide/vod/"
     }
   }

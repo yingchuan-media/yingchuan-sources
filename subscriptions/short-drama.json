@@ -2,7 +2,7 @@
   "cache_time": 7200,
   "api_site": {
     "huangdou": {
-      "name": "黄豆",
+      "name": "不可用 黄豆",
       "api": "https://ferncider.cc",
       "adapter": "huangdou",
       "native": {
@@ -62,7 +62,7 @@
       }
     },
     "yeguo": {
-      "name": "野果",
+      "name": "不可用 野果",
       "api": "https://analyze.buxefaex.cc",
       "adapter": "yeguo",
       "native": {
@@ -107,7 +107,7 @@
       }
     },
     "huangguoai": {
-      "name": "黄果AI",
+      "name": "不可用 黄果AI",
       "api": "https://huangguoai.com",
       "adapter": "huangguoai",
       "native": {
@@ -160,7 +160,7 @@
       }
     },
     "jinguo": {
-      "name": "禁果",
+      "name": "不可用 禁果",
       "api": "https://d1wyuxwdrlykj1.cloudfront.net",
       "adapter": "jinguo",
       "native": {
@@ -200,7 +200,7 @@
       }
     },
     "jinguoduanju": {
-      "name": "禁果短剧",
+      "name": "不可用 禁果短剧",
       "api": "https://jinguoduanju.app",
       "adapter": "jinguoduanju",
       "native": {
