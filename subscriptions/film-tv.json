@@ -16,11 +16,6 @@
       "api": "https://bfzyapi.com/api.php/provide/vod",
       "detail": "https://bfzy.tv"
     },
-    "www.ryzyw.com": {
-      "name": "如意资源",
-      "api": "https://cj.rycjapi.com/api.php/provide/vod",
-      "detail": "https://www.ryzyw.com"
-    },
     "api_1": {
       "name": "1080资源",
       "api": "https://api.1080zyku.com/inc/api_mac10.php",
@@ -53,11 +48,6 @@
       "api": "https://www.moduzy.com/api.php/provide/vod",
       "disabled": false
     },
-    "tvbox-696d3e1521a8c83a093b18ba": {
-      "name": "10 如意",
-      "api": "https://cj.rycjapi.com/api.php/provide/vod",
-      "disabled": false
-    },
     "tvbox-77ba3e2e3d3c7a779ff4a0f6": {
       "name": "1080资源库 切",
       "api": "https://api.1080zyku.com/inc/api_mac10.php",
@@ -68,24 +58,10 @@
       "api": "https://ikunzyapi.com/api.php/provide/vod/from/ikm3u8",
       "disabled": false
     },
-    "tvbox-14bb2fa3370824aaffd62d2c": {
-      "name": "如意 采集",
-      "api": "https://cj.rycjapi.com/api.php/provide/vod/at/json",
-      "disabled": false
-    },
-    "tvbox-b21f656b2bad47bf1565f37b": {
-      "name": "如意 影视",
-      "api": "http://cj.rycjapi.com/api.php/provide/vod",
-      "disabled": false
-    },
     "tvbox-8bda40c7eb0a44ed19d69658": {
       "name": "柚子影视",
       "api": "https://api.yzzy-api.com/inc/api.php/provide/vod/at/xml",
       "disabled": false
-    },
-    "yszzq-251": {
-      "name": "新芒果资源站",
-      "api": "https://caiji.mgzyapi.com/api.php/provide/vod/at/xml/"
     },
     "yszzq-243": {
       "name": "无水印资源网",
@@ -99,8 +75,32 @@
       "name": "43 HG",
       "api": "https://hong.hgyx.vip/api.php/provide/vod"
     },
+    "www.ryzyw.com": {
+      "name": "【不可用】如意资源",
+      "api": "https://cj.rycjapi.com/api.php/provide/vod",
+      "detail": "https://www.ryzyw.com"
+    },
+    "tvbox-696d3e1521a8c83a093b18ba": {
+      "name": "【不可用】10 如意",
+      "api": "https://cj.rycjapi.com/api.php/provide/vod",
+      "disabled": false
+    },
+    "tvbox-14bb2fa3370824aaffd62d2c": {
+      "name": "【不可用】如意 采集",
+      "api": "https://cj.rycjapi.com/api.php/provide/vod/at/json",
+      "disabled": false
+    },
+    "tvbox-b21f656b2bad47bf1565f37b": {
+      "name": "【不可用】如意 影视",
+      "api": "http://cj.rycjapi.com/api.php/provide/vod",
+      "disabled": false
+    },
+    "yszzq-251": {
+      "name": "【不可用】新芒果资源站",
+      "api": "https://caiji.mgzyapi.com/api.php/provide/vod/at/xml/"
+    },
     "lovedan.net": {
-      "name": "艾旦影视",
+      "name": "【不可用】艾旦影视",
       "api": "https://lovedan.net/api.php/provide/vod",
       "detail": "https://lovedan.net"
     },

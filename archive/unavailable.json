@@ -1,6 +1,11 @@
 {
-  "last_checked_at": "2026-11-19T09:35:58+00:00",
+  "last_checked_at": "2026-11-19T09:47:48+00:00",
   "pending": {
+    "lovedan.net": {
+      "fingerprint": "264db36492b6c3e76d08e821414a74d49da92d30601c20efbf177c9c3bffe9a9",
+      "first_failed": "2026-11-19",
+      "last_failed": "2026-11-19"
+    },
     "dbzy.tv": {
       "fingerprint": "9005f43fd437c5fb29af4ba091cadb88aa05257050ef192c25e5e2686a1de8cb",
       "first_failed": "2026-11-19",
@@ -93,6 +98,11 @@
     },
     "yszzq-112": {
       "fingerprint": "cd20030f9fb136042a66f8d19657967b7b5b9fa6b7805c1c57b3647487d73cc3",
+      "first_failed": "2026-11-19",
+      "last_failed": "2026-11-19"
+    },
+    "yeguo": {
+      "fingerprint": "8411dba99aff91425a57f15dc449f8fdc9edb00790c7ab45ad48ba193102bafb",
       "first_failed": "2026-11-19",
       "last_failed": "2026-11-19"
     },
