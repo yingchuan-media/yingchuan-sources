@@ -75,8 +75,7 @@ class HealthArchiveTests(unittest.TestCase):
                 day, self.row(playback=health.Outcome("unknown", "加密流需客户端验证")))
             self.assertEqual(archived, 0)
             self.assertEqual(state["pending"], {})
-        self.assertEqual(subscriptions.read_json(self.subscription(self.root))["api_site"]["sample"]["name"],
-                         "【不可用】测试站")
+        self.assertEqual(subscriptions.read_json(self.subscription(self.root))["api_site"]["sample"], self.site)
         self.publish(10, self.row(cover=health.Outcome("fail", "HTTP 404")))
         self.assertEqual(subscriptions.read_json(self.subscription(self.root))["api_site"]["sample"], self.site)
 
@@ -100,14 +99,15 @@ class HealthArchiveTests(unittest.TestCase):
         _, changed = self.publish(4, failure)
         self.assertEqual(changed["pending"]["sample"]["first_failed"], "2026-11-04")
 
-    def test_access_limit_and_single_playback_failure_require_client(self):
-        for row in (self.row(catalog=health.Outcome("fail", "HTTP 403")),
-                    self.row(catalog=health.Outcome("unknown", "需要本人访问确认")),
-                    self.row(playback=health.Outcome("fail", "有界样本未解码首帧"))):
+    def test_directory_restrictions_keep_label_but_sample_failures_do_not(self):
+        for row, expected in (
+                (self.row(catalog=health.Outcome("fail", "HTTP 403")), "【不可用】测试站"),
+                (self.row(catalog=health.Outcome("unknown", "需要本人访问确认")), "【不可用】测试站"),
+                (self.row(playback=health.summarize_samples([health.Outcome("fail", "HTTP 404")] * 3)), "测试站")):
             self.assertEqual(health.update_sources(
                 self.root, {"film-tv": subscriptions.read_json(self.subscription(self.root))},
                 [row], "2026-11-01T07:00:00+08:00")[0]["pending"], {})
-            self.assertEqual(row["name"], "【不可用】测试站")
+            self.assertEqual(row["name"], expected)
 
     def test_legacy_and_new_labels_are_sorted_at_end_in_subscription_and_report(self):
         cases = [

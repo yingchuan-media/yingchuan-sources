@@ -59,6 +59,50 @@ class HealthTests(unittest.TestCase):
         self.assertEqual(result["catalog"].ms, 12)
         self.assertEqual([method for method, url in client.calls if "cover.example" in url], ["HEAD"])
 
+    def test_three_distinct_samples_continue_after_failures(self):
+        def item(identity):
+            return {"vod_id": identity, "vod_name": "合成剧",
+                    "vod_pic": f"https://cover.example/{identity}.jpg",
+                    "vod_play_url": f"第一集$https://media.example/{identity}"}
+
+        client = self.client(entries=[item(7), item(7), item(8), item(9), item(10)])
+        for identity in (7, 8, 9):
+            client.routes[("HEAD", f"https://cover.example/{identity}.jpg")] = reply(b"", "image/jpeg")
+            client.routes[("GET", f"https://media.example/{identity}")] = reply(b"synthetic", "video/mp4")
+        client.routes[("HEAD", "https://cover.example/7.jpg")] = health.HTTPStatusError(404)
+        client.routes[("GET", "https://media.example/7")] = health.HTTPStatusError(404)
+        client.routes[("GET", "https://media.example/9")] = health.UnverifiedProbe("图片正文已阻止")
+        with patch.object(health, "decode_frame", return_value=True):
+            result = health.probe_site("film-tv", "sample", self.site, client, "ffmpeg")
+        self.assertEqual(result["cover"].status, "ok")
+        self.assertIn("3 项：2 通过 / 1 失败 / 0 未验证", result["cover"].message)
+        self.assertEqual(result["playback"].status, "ok")
+        self.assertIn("3 项：1 通过 / 1 失败 / 1 未验证", result["playback"].message)
+        self.assertIn("播放入口：HTTP 404", result["playback"].message)
+        self.assertIn("图片正文已阻止", result["playback"].message)
+        self.assertEqual([(method, url) for method, url in client.calls if "cover.example" in url],
+                         [("HEAD", f"https://cover.example/{identity}.jpg") for identity in (7, 8, 9)])
+        self.assertEqual([url for method, url in client.calls if "media.example" in url],
+                         [f"https://media.example/{identity}" for identity in (7, 8, 9)])
+
+    def test_no_success_with_any_unverified_sample_stays_unverified(self):
+        fail = health.Outcome("fail", "HTTP 404")
+        unknown = health.Outcome("unknown", "加密流需客户端验证")
+        self.assertEqual(health.summarize_samples([fail, fail, unknown]).status, "unknown")
+        self.assertEqual(health.summarize_samples([fail, fail, fail]).status, "fail")
+        self.assertEqual(health.summarize_samples([unknown]).status, "unknown")
+        self.assertIn("抽样 1 项", health.summarize_samples([unknown]).message)
+
+    def test_hls_segment_error_identifies_stage(self):
+        address = "https://media.example/playlist"
+        client = FakeClient({
+            ("GET", address): reply(b"#EXTM3U\n#EXTINF:2,\nsegment.ts\n", "application/vnd.apple.mpegurl"),
+            ("GET", "https://media.example/segment.ts"): health.HTTPStatusError(404),
+        })
+        outcome = health.safe_probe(lambda: health.probe_playback(client, address, "ffmpeg"))
+        self.assertEqual(outcome.status, "fail")
+        self.assertEqual(outcome.message, "HLS 媒体分片：HTTP 404")
+
     def test_decoder_failure_is_not_playable(self):
         with patch.object(health, "decode_frame", return_value=False):
             result = health.probe_site("film-tv", "sample", self.site, self.client(), "ffmpeg")
@@ -361,7 +405,7 @@ class LocalHTTPTests(unittest.TestCase):
 
     def test_image_get_is_rejected_but_head_works(self):
         client = health.Client()
-        with self.assertRaisesRegex(health.ProbeError, "禁止读取图片正文"):
+        with self.assertRaisesRegex(health.UnverifiedProbe, "已阻止读取正文"):
             client.request("http://fixture.example/image")
         self.assertEqual(client.request("http://fixture.example/image", method="HEAD").body, b"")
 

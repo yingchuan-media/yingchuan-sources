@@ -16,10 +16,9 @@ def unavailable_last(sites):
 
 def source_status(row):
     catalog = row["catalog"]
-    playback = row["playback"]
     if catalog.status == "fail":
         return "client" if catalog.message in CLIENT_CHECK_HTTP else "unavailable"
-    if catalog.status != "ok" or playback.status != "ok":
+    if catalog.status != "ok":
         return "client"
     return "ok"
 

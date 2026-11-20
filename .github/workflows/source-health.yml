@@ -15,7 +15,7 @@ concurrency:
 jobs:
   probe:
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
+    timeout-minutes: 45
     env:
       YINGCHUAN_NATIVE_CORE_REVISION: 3b1d9b0e2e096203cba6156b3aee241033ca4823
     steps:

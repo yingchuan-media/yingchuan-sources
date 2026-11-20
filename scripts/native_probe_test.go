@@ -299,14 +299,30 @@ func repositoryHealthProbe(ctx context.Context, engine *nativeEngine, input repo
 	if result["catalog"].Status != "ok" {
 		return result
 	}
-	drama := page.Items[0]
-	for _, candidate := range page.Items {
-		if candidate.VIP == nil || !*candidate.VIP {
-			drama = candidate
-			break
+	samples := make([]nativeDrama, 0, 3)
+	seen := make(map[string]bool)
+	for _, drama := range page.Items {
+		if drama.ID != "" && !seen[drama.ID] {
+			seen[drama.ID] = true
+			samples = append(samples, drama)
+			if len(samples) == cap(samples) {
+				break
+			}
 		}
 	}
-	result["search"] = repositoryHealthStep(ctx, "搜索", 18*time.Second, func(c context.Context) (string, error) {
+	if len(samples) == 0 {
+		result["catalog"] = repositoryHealthOutcome{Status: "fail", Message: "原生目录缺少媒体标识"}
+		return result
+	}
+	covers, playbacks := make([]repositoryHealthOutcome, 0, len(samples)), make([]repositoryHealthOutcome, 0, len(samples))
+	for _, sample := range samples {
+		covers = append(covers, repositoryHealthCover(ctx, engine, sample))
+		playbacks = append(playbacks, repositoryHealthPlayback(ctx, engine, sample))
+	}
+	result["cover"] = repositoryHealthSummarize(covers)
+	result["playback"] = repositoryHealthSummarize(playbacks)
+	drama := samples[0]
+	result["search"] = repositoryHealthStep(ctx, "搜索", 12*time.Second, func(c context.Context) (string, error) {
 		page, err := engine.nativeCatalog(c, nativeInput{Source: site.Adapter, Page: 1, Query: drama.Title, Force: true})
 		if err != nil {
 			return "", err
@@ -321,7 +337,46 @@ func repositoryHealthProbe(ctx context.Context, engine *nativeEngine, input repo
 		}
 		return "", errors.New("search did not match sample identity")
 	})
-	result["cover"] = repositoryHealthStep(ctx, "封面", 8*time.Second, func(c context.Context) (string, error) {
+	return result
+}
+
+func repositoryHealthSummarize(samples []repositoryHealthOutcome) repositoryHealthOutcome {
+	passed, failed, unverified := 0, 0, 0
+	var total int64
+	var reasons []string
+	seen := make(map[string]bool)
+	for _, sample := range samples {
+		switch sample.Status {
+		case "ok":
+			passed++
+		case "fail":
+			failed++
+		default:
+			unverified++
+		}
+		if sample.MS != nil {
+			total += *sample.MS
+		}
+		if sample.Status != "ok" && !seen[sample.Message] {
+			seen[sample.Message] = true
+			reasons = append(reasons, sample.Message)
+		}
+	}
+	status := "fail"
+	if passed > 0 {
+		status = "ok"
+	} else if unverified > 0 {
+		status = "unknown"
+	}
+	message := fmt.Sprintf("抽样 %d 项：%d 通过 / %d 失败 / %d 未验证", len(samples), passed, failed, unverified)
+	if len(reasons) > 0 {
+		message += "（" + strings.Join(reasons, "；") + "）"
+	}
+	return repositoryHealthOutcome{Status: status, Message: message, MS: &total}
+}
+
+func repositoryHealthCover(ctx context.Context, engine *nativeEngine, drama nativeDrama) repositoryHealthOutcome {
+	result := repositoryHealthStep(ctx, "封面", 5*time.Second, func(c context.Context) (string, error) {
 		if drama.Cover == "" {
 			return "未提供封面地址", nil
 		}
@@ -346,14 +401,15 @@ func repositoryHealthProbe(ctx context.Context, engine *nativeEngine, input repo
 		}
 		return "仅 HEAD 可达", nil
 	})
-	if result["cover"].Message == "未提供封面地址" || result["cover"].Message == "封面不支持 HEAD" || result["cover"].Message == "封面响应头未证明图片类型" {
-		outcome := result["cover"]
-		outcome.Status = "unknown"
-		result["cover"] = outcome
+	if result.Message == "未提供封面地址" || result.Message == "封面不支持 HEAD" || result.Message == "封面响应头未证明图片类型" {
+		result.Status = "unknown"
 	}
-	var chapters []Chapter
+	return result
+}
+
+func repositoryHealthPlayback(ctx context.Context, engine *nativeEngine, drama nativeDrama) repositoryHealthOutcome {
 	unknown := ""
-	result["playback"] = repositoryHealthStep(ctx, "播放", 36*time.Second, func(c context.Context) (string, error) {
+	result := repositoryHealthStep(ctx, "播放", 20*time.Second, func(c context.Context) (string, error) {
 		if drama.VIP != nil && *drama.VIP {
 			unknown = "样本需要来源会员授权"
 			return unknown, nil
@@ -366,7 +422,7 @@ func repositoryHealthProbe(ctx context.Context, engine *nativeEngine, input repo
 		if !ok {
 			return "", errors.New("detail shape invalid")
 		}
-		chapters, _ = value["chapters"].([]Chapter)
+		chapters, _ := value["chapters"].([]Chapter)
 		if len(chapters) == 0 {
 			return "", errors.New("no episodes")
 		}
@@ -411,9 +467,7 @@ func repositoryHealthProbe(ctx context.Context, engine *nativeEngine, input repo
 		return "客户端取流及抽样首帧通过", repositoryHealthDecode(c, body)
 	})
 	if unknown != "" {
-		outcome := result["playback"]
-		outcome.Status = "unknown"
-		result["playback"] = outcome
+		result.Status = "unknown"
 	}
 	return result
 }
@@ -468,7 +522,7 @@ func TestSourceHealthProbe(t *testing.T) {
 	}
 	engine.downloader.client.Timeout = 12 * time.Second
 	engine.downloader.cfg.Retries = 1
-	ctx, cancel := context.WithTimeout(context.Background(), 70*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 105*time.Second)
 	defer cancel()
 	ctx = context.WithValue(ctx, backgroundCatalogKey{}, true)
 	body, err := json.Marshal(repositoryHealthProbe(ctx, engine, input))
@@ -541,6 +595,11 @@ func TestRepositoryHealthSyntheticNativeFlow(t *testing.T) {
 		}
 	}()
 	coverHeads, searchCalls, mediaCalls := 0, 0, 0
+	details := make(map[string]int)
+	row := func(id int) map[string]any {
+		return map[string]any{"id": id, "title": fmt.Sprintf("Synthetic title %d", id),
+			"cover": fmt.Sprintf("https://cover.native.example.test/%d.jpg", id)}
+	}
 	fixture := repositoryHealthFixtureTransport(func(request *http.Request) (*http.Response, error) {
 		response := &http.Response{StatusCode: 200, Header: http.Header{}, Request: request}
 		var payload any
@@ -550,6 +609,12 @@ func TestRepositoryHealthSyntheticNativeFlow(t *testing.T) {
 				t.Error("native flow requested an image body")
 			}
 			coverHeads++
+			switch request.URL.Path {
+			case "/7.jpg":
+				response.StatusCode = 404
+			case "/9.jpg":
+				response.StatusCode = 405
+			}
 			response.Header.Set("Content-Type", "image/jpeg")
 			response.Body = io.NopCloser(strings.NewReader(""))
 			return response, nil
@@ -563,20 +628,29 @@ func TestRepositoryHealthSyntheticNativeFlow(t *testing.T) {
 			}
 			return response, nil
 		case "api.native.example.test":
-			row := map[string]any{"id": 7, "title": "Synthetic native title", "cover": "https://cover.native.example.test/poster.jpg"}
 			switch request.URL.Path {
-			case "/sorani-cms/api/video", "/sorani-cms/api/video/search":
-				if strings.HasSuffix(request.URL.Path, "/search") {
-					searchCalls++
-					if request.URL.Query().Get("keyword") != "Synthetic native title" {
-						t.Error("search did not use sampled title")
-					}
+			case "/sorani-cms/api/video":
+				payload = map[string]any{"records": []any{row(7), row(8), row(9), row(10)}, "total": 4}
+			case "/sorani-cms/api/video/search":
+				searchCalls++
+				if request.URL.Query().Get("keyword") != "Synthetic title 7" {
+					t.Error("search did not use sampled title")
 				}
-				payload = map[string]any{"records": []any{row}, "total": 1}
+				payload = map[string]any{"records": []any{row(7)}, "total": 1}
 			case "/sorani-cms/api/video/7":
-				row["episodes"] = []any{map[string]any{"id": 11, "episodeOrder": 1, "enabled": true}}
-				payload = row
-			case "/sorani-cms/api/video/episode/11/play":
+				details[request.URL.Path]++
+				response.StatusCode, response.Body = 404, io.NopCloser(strings.NewReader(""))
+				return response, nil
+			case "/sorani-cms/api/video/8", "/sorani-cms/api/video/9":
+				details[request.URL.Path]++
+				id := 8
+				if strings.HasSuffix(request.URL.Path, "/9") {
+					id = 9
+				}
+				item := row(id)
+				item["episodes"] = []any{map[string]any{"id": id + 10, "episodeOrder": 1, "enabled": true}}
+				payload = item
+			case "/sorani-cms/api/video/episode/18/play", "/sorani-cms/api/video/episode/19/play":
 				payload = map[string]any{"canPlay": true, "playUrl": "https://media.native.example.test/index.m3u8"}
 			default:
 				t.Errorf("unexpected native endpoint %s", request.URL.Path)
@@ -601,8 +675,12 @@ func TestRepositoryHealthSyntheticNativeFlow(t *testing.T) {
 			t.Errorf("%s: %+v", field, outcome)
 		}
 	}
-	if coverHeads != 1 || searchCalls != 1 || mediaCalls < 2 {
-		t.Fatalf("native visible protocol steps missing: HEAD=%d search=%d media=%d", coverHeads, searchCalls, mediaCalls)
+	if coverHeads != 3 || searchCalls != 1 || mediaCalls < 4 || len(details) != 3 {
+		t.Fatalf("native sample coverage: HEAD=%d search=%d media=%d detail=%v", coverHeads, searchCalls, mediaCalls, details)
+	}
+	if !strings.Contains(result["cover"].Message, "3 项：1 通过 / 1 失败 / 1 未验证") ||
+		!strings.Contains(result["playback"].Message, "3 项：2 通过 / 1 失败 / 0 未验证") {
+		t.Fatalf("native sample outcomes: %+v", result)
 	}
 }
 

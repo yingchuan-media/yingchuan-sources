@@ -25,6 +25,8 @@ from source_health_archive import update_sources
 
 TEXT_LIMIT = 2 * 1024 * 1024
 MEDIA_LIMIT = 1024 * 1024
+SAMPLE_LIMIT = 3
+NATIVE_PROBE_TIMEOUT = 110
 FIELDS = ("catalog", "cover", "search", "playback")
 START = "<!-- source-health:start -->"
 END = "<!-- source-health:end -->"
@@ -35,6 +37,9 @@ INVENTORY_END = "<!-- source-inventory:end -->"
 class ProbeError(Exception):
     pass
 
+
+class UnverifiedProbe(ProbeError):
+    pass
 
 class HTTPStatusError(ProbeError):
     def __init__(self, status):
@@ -68,17 +73,17 @@ def resolve_public(url):
 
 
 class Client:
-    def __init__(self, timeout=8, budget=50):
+    def __init__(self, timeout=8, budget=80):
         self.timeout = timeout
         self.deadline = time.monotonic() + budget
-        self.remaining = 16
+        self.remaining = 32
 
     def request(self, url, method="GET", limit=TEXT_LIMIT, partial=False):
         started = time.monotonic()
         for _ in range(4):
             self.remaining -= 1
             if self.remaining < 0 or time.monotonic() >= self.deadline:
-                raise ProbeError("来源检测预算用尽")
+                raise UnverifiedProbe("来源检测预算用尽")
             connection = None
             response = None
             timer = None
@@ -137,7 +142,7 @@ class Client:
                 body = bytearray()
                 if method != "HEAD":
                     if response_headers.get("content-type", "").lower().startswith("image/"):
-                        raise ProbeError("禁止读取图片正文")
+                        raise UnverifiedProbe("响应为图片，已阻止读取正文，需客户端验证")
                     maximum = limit if partial else limit + 1
                     request_deadline = min(self.deadline, started + self.timeout)
                     while len(body) < maximum:
@@ -231,8 +236,18 @@ def probe_playback(client, url, executable):
     if not executable:
         return Outcome("unknown", "未安装 FFmpeg，未验证首帧")
     started = time.monotonic()
+
+    def fetch(stage, address, partial=True):
+        try:
+            return client.request(address, limit=MEDIA_LIMIT, partial=partial)
+        except UnverifiedProbe as error:
+            raise UnverifiedProbe(f"{stage}：{error}") from None
+        except ProbeError as error:
+            raise ProbeError(f"{stage}：{error}") from None
+
+    stage = "播放入口"
     for _ in range(3):
-        response = client.request(url, limit=MEDIA_LIMIT, partial=True)
+        response = fetch(stage, url)
         body = response.body
         stripped = body.lstrip(b"\xef\xbb\xbf \r\n\t")
         if stripped.startswith(b"#EXTM3U"):
@@ -249,6 +264,7 @@ def probe_playback(client, url, executable):
                         if line.startswith("#EXT-X-STREAM-INF:") and not lines[index + 1].startswith("#")]
             if variants:
                 url = urljoin(response.url, variants[0])
+                stage = "HLS 子清单"
                 continue
             segments = [lines[index + 1] for index, line in enumerate(lines[:-1])
                         if line.startswith("#EXTINF:") and not lines[index + 1].startswith("#")]
@@ -263,8 +279,8 @@ def probe_playback(client, url, executable):
                 match = re.search(r'URI="([^"]+)"', maps[-1])
                 if not match:
                     raise ProbeError("HLS 初始化地址无效")
-                initialization = client.request(urljoin(response.url, match[1]), limit=MEDIA_LIMIT).body
-            segment = client.request(urljoin(response.url, segments[0]), limit=MEDIA_LIMIT, partial=True).body
+                initialization = fetch("HLS 初始化片段", urljoin(response.url, match[1]), partial=False).body
+            segment = fetch("HLS 媒体分片", urljoin(response.url, segments[0])).body
             body = initialization + segment
         elif stripped.startswith((b"<", b"{")):
             return Outcome("unknown", "网页、解析或 DASH 协议需客户端验证")
@@ -283,6 +299,8 @@ def safe_probe(action):
     started = time.monotonic()
     try:
         return action()
+    except UnverifiedProbe as error:
+        return Outcome("unknown", str(error), round((time.monotonic() - started) * 1000))
     except ProbeError as error:
         return Outcome("fail", str(error), round((time.monotonic() - started) * 1000))
     except (ValueError, UnicodeError, TypeError):
@@ -299,10 +317,10 @@ def probe_native(group, key, site, executable, runner=None):
         environment.update({"HOME": state, "USERPROFILE": state,
                             "YINGCHUAN_HEALTH_RUN": "1", "YINGCHUAN_HEALTH_FFMPEG": executable or ""})
         try:
-            process = subprocess.run([str(runner), "-test.run=^TestSourceHealthProbe$", "-test.timeout=90s"],
+            process = subprocess.run([str(runner), "-test.run=^TestSourceHealthProbe$", "-test.timeout=115s"],
                                      input=json.dumps({"version": 1, "key": key, "site": site}).encode(),
                                      stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
-                                     env=environment, timeout=85, check=True)
+                                     env=environment, timeout=NATIVE_PROBE_TIMEOUT, check=True)
         except subprocess.TimeoutExpired:
             raise RuntimeError("原生检测进程超时，阶段未确认；原报告保留") from None
     lines = [line.removeprefix(b"YINGCHUAN_HEALTH ") for line in process.stdout.splitlines()
@@ -318,7 +336,8 @@ def probe_native(group, key, site, executable, runner=None):
         if (not isinstance(entry, dict) or set(entry) - {"status", "message", "ms"}
                 or entry.get("status") not in {"ok", "fail", "unknown"}
                 or not isinstance(entry.get("message"), str) or len(entry["message"]) > 160
-                or entry.get("ms") is not None and (type(entry["ms"]) is not int or not 0 <= entry["ms"] <= 85000)):
+                or entry.get("ms") is not None and (type(entry["ms"]) is not int
+                                                    or not 0 <= entry["ms"] <= NATIVE_PROBE_TIMEOUT * 1000)):
             raise RuntimeError("原生检测状态无效")
         result[field] = Outcome(**entry)
     return result
@@ -349,7 +368,32 @@ def probe_site(group, key, site, client, executable, native_runner=None):
             raise ProbeError("搜索未返回抽样条目")
         return Outcome("ok", "命中抽样条目", response.ms)
 
+    samples = {}
+    for row in rows:
+        identity = str(row["vod_id"]).strip()
+        if identity not in samples:
+            samples[identity] = probe_sample(site, row.copy(), client, executable)
+            if len(samples) == SAMPLE_LIMIT:
+                break
+    for field in ("cover", "playback"):
+        result[field] = summarize_samples([sample[field] for sample in samples.values()])
     result["search"] = safe_probe(search)
+    return result
+
+
+def summarize_samples(samples):
+    passed = sum(sample.status == "ok" for sample in samples)
+    failed = sum(sample.status == "fail" for sample in samples)
+    unverified = len(samples) - passed - failed
+    status = "ok" if passed else "unknown" if unverified else "fail"
+    reasons = "；".join(dict.fromkeys(sample.message for sample in samples if sample.status != "ok"))
+    elapsed = [sample.ms for sample in samples if sample.ms is not None]
+    return Outcome(status, f"抽样 {len(samples)} 项：{passed} 通过 / {failed} 失败 / {unverified} 未验证"
+                   + (f"（{reasons}）" if reasons else ""), sum(elapsed) if elapsed else None)
+
+
+def probe_sample(site, sample, client, executable):
+    result = {}
     if not sample.get("vod_pic") or not sample.get("vod_play_url"):
         def detail():
             response = client.request(api_url(site["api"], ac="detail", ids=str(sample["vod_id"])))
@@ -382,7 +426,7 @@ def probe_site(group, key, site, client, executable, native_runner=None):
             return Outcome("unknown", "封面响应头非图片，未读取正文", response.ms)
         return Outcome("ok", "仅 HEAD 可达", response.ms)
 
-    if result["cover"].status == "unknown":
+    if "cover" not in result:
         result["cover"] = safe_probe(cover)
 
     def playback():
@@ -391,9 +435,11 @@ def probe_site(group, key, site, client, executable, native_runner=None):
             return Outcome("unknown", "未提供播放地址")
         episode = raw.split("$$$", 1)[0].split("#", 1)[0].strip()
         address = episode.split("$", 1)[-1].strip()
+        if not address:
+            return Outcome("unknown", "抽样线路未提供播放地址")
         return probe_playback(client, urljoin(site["api"], address), executable)
 
-    if result["playback"].status == "unknown":
+    if "playback" not in result:
         result["playback"] = safe_probe(playback)
     return result
 
@@ -409,7 +455,7 @@ def render_report(rows, checked_at, decoder_version, archived_count=0):
     failed = sum(any(row[field].status == "fail" for field in FIELDS) for row in rows)
     lines = [START, "", f"检测时间：{escape(checked_at)}；共 {len(rows)} 项，四项通过 {passed} 项，含失败 {failed} 项。",
              "", f"解码工具：{escape(decoder_version)}。延迟为运行节点的目录请求耗时（含 DNS、TLS 与正文），不代表本地延迟。",
-             "", "✅ 通过 · ❌ 失败 · ⚪ 未验证。封面仅检查 HEAD；播放仅抽样一条线路的第一集和一个片段，首帧通过不保证整片、其他线路、音轨或设备可播。", ""]
+             "", "✅ 通过 · ❌ 失败 · ⚪ 未验证。封面和播放各抽查最多三个不同媒体；至少一个通过即通过，并保留各结果数量。封面仅检查 HEAD。每个播放样本只查一条线路的一集及一个有界片段；首帧通过不保证整片、其他线路、音轨或设备可播。", ""]
     if archived_count:
         lines += [f"本次从订阅移出 {archived_count} 项，见[不可用站源归档]({HEALTH_ARCHIVE})。", ""]
     for group, name in GROUPS.items():
