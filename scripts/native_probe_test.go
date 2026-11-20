@@ -436,16 +436,20 @@ func TestSourceHealthProbe(t *testing.T) {
 	transport.Proxy = nil
 	transport.DialContext = repositoryHealthPublicDial
 	transport.ResponseHeaderTimeout = 8 * time.Second
-	browser := newHuangguoBrowserTransport(transport, engine.downloader)
-	browser.newClient = func(proxy string) (browserHTTPClient, error) {
-		if proxy != "" {
-			return nil, errors.New("native health does not use external proxy credentials")
+	base := http.RoundTripper(transport)
+	var browser *huangguoBrowserTransport
+	if repositoryHealthUsesBrowserTransport(input) {
+		browser = newHuangguoBrowserTransport(transport, engine.downloader)
+		browser.newClient = func(proxy string) (browserHTTPClient, error) {
+			if proxy != "" {
+				return nil, errors.New("native health does not use external proxy credentials")
+			}
+			return tlsclient.NewHttpClient(tlsclient.NewNoopLogger(), tlsclient.WithClientProfile(profiles.Chrome_150), tlsclient.WithRandomTLSExtensionOrder(),
+				tlsclient.WithDisableHttp3(), tlsclient.WithNotFollowRedirects(), tlsclient.WithTimeoutSeconds(12), tlsclient.WithCookieJar(tlsclient.NewCookieJar()), tlsclient.WithDialContext(repositoryHealthPublicDial))
 		}
-		return tlsclient.NewHttpClient(tlsclient.NewNoopLogger(), tlsclient.WithClientProfile(profiles.Chrome_150), tlsclient.WithRandomTLSExtensionOrder(),
-			tlsclient.WithDisableHttp3(), tlsclient.WithNotFollowRedirects(), tlsclient.WithTimeoutSeconds(12), tlsclient.WithCookieJar(tlsclient.NewCookieJar()), tlsclient.WithDialContext(repositoryHealthPublicDial))
+		base = browser
 	}
-	defer browser.CloseIdleConnections()
-	engine.downloader.client.Transport = &repositoryHealthTransport{base: browser}
+	engine.downloader.client.Transport = &repositoryHealthTransport{base: base}
 	previousRedirect := engine.downloader.client.CheckRedirect
 	engine.downloader.client.CheckRedirect = func(next *http.Request, via []*http.Request) error {
 		if len(via) > 0 && via[len(via)-1].URL.Scheme == "https" && next.URL.Scheme != "https" {
@@ -468,6 +472,41 @@ func TestSourceHealthProbe(t *testing.T) {
 	fmt.Printf("YINGCHUAN_HEALTH %s\n", body)
 }
 
+
+func repositoryHealthUsesBrowserTransport(input repositoryHealthInput) bool {
+	var site struct {
+		Adapter string `json:"adapter"`
+	}
+	if json.Unmarshal(input.Site, &site) != nil {
+		return false
+	}
+	switch site.Adapter {
+	case "huangguo-video", "huangguoai", "cloudfront":
+		return true
+	default:
+		return false
+	}
+}
+
+func TestRepositoryHealthTransportSelection(t *testing.T) {
+	for _, test := range []struct {
+		adapter string
+		browser bool
+	}{
+		{"dsd", false},
+		{"heitao", false},
+		{"sorani", false},
+		{"huangguo-video", true},
+		{"huangguoai", true},
+		{"cloudfront", true},
+	} {
+		raw, _ := json.Marshal(map[string]any{"adapter": test.adapter})
+		actual := repositoryHealthUsesBrowserTransport(repositoryHealthInput{Site: raw})
+		if actual != test.browser {
+			t.Errorf("%s browser transport=%v, want %v", test.adapter, actual, test.browser)
+		}
+	}
+}
 type repositoryHealthFixtureTransport func(*http.Request) (*http.Response, error)
 
 func (transport repositoryHealthFixtureTransport) RoundTrip(request *http.Request) (*http.Response, error) {

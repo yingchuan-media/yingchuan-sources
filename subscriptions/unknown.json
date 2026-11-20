@@ -91,7 +91,7 @@
       "api": "https://f-1.cc/api.php/provide/vod"
     },
     "dsd": {
-      "name": "【不可用】帝果",
+      "name": "帝果",
       "api": "https://www.dsd.com.se",
       "adapter": "dsd",
       "native": {
