@@ -21,11 +21,6 @@
       "api": "https://www.moduzy.com/api.php/provide/vod",
       "disabled": false
     },
-    "tvbox-3c1204193dd947c7b92257f3": {
-      "name": "IK",
-      "api": "https://ikunzyapi.com/api.php/provide/vod/from/ikm3u8",
-      "disabled": false
-    },
     "yszzq-243": {
       "name": "无水印资源网",
       "api": "https://api.wsyzy.net/api.php/provide/vod/from/wsym3u8/at/xml/"
@@ -34,11 +29,6 @@
       "name": "如意资源",
       "api": "https://cj.rycjapi.com/api.php/provide/vod",
       "detail": "https://www.ryzyw.com"
-    },
-    "tvbox-14bb2fa3370824aaffd62d2c": {
-      "name": "如意 采集",
-      "api": "https://cj.rycjapi.com/api.php/provide/vod/at/json",
-      "disabled": false
     },
     "bfzy.tv": {
       "name": "暴风资源",
@@ -54,22 +44,10 @@
       "name": "11 暴风",
       "api": "http://by.bfzyapi.com/api.php/provide/vod"
     },
-    "tvbox-43979197c7b5722af879bb11": {
-      "name": "量子 影视",
-      "api": "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8"
-    },
-    "tvbox-9853db9402397d48e6d6cf30": {
-      "name": "暴风影视",
-      "api": "http://by.bfzyapi.com/api.php/provide/vod/at/xml"
-    },
     "tvbox-8bda40c7eb0a44ed19d69658": {
       "name": "柚子影视",
       "api": "https://api.yzzy-api.com/inc/api.php/provide/vod/at/xml",
       "disabled": false
-    },
-    "tvbox-58ed988fd29158a314961954": {
-      "name": "非凡影视",
-      "api": "https://api.ffzyapi.com/api.php/provide/vod/from/ffm3u8/at/xml"
     },
     "tvbox-dfaa8e71bccb3d910803980d": {
       "name": "【不可用】43 HG",
@@ -155,12 +133,12 @@
       "detail": "https://xinlangapi.com"
     },
     "www.subozy.com": {
-      "name": "【不可用】速播资源",
+      "name": "速播资源速博采集",
       "api": "https://subocaiji.com/api.php/provide/vod",
       "detail": "https://www.subozy.com"
     },
     "jinyingzy.com": {
-      "name": "【不可用】金鹰资源",
+      "name": "金鹰资源金鹰",
       "api": "https://jinyingzy.com/api.php/provide/vod",
       "detail": "https://jinyingzy.com"
     },
@@ -240,7 +218,7 @@
       "detail": ""
     },
     "api_43": {
-      "name": "【不可用】金鹰资源",
+      "name": "金鹰资源集影",
       "api": "https://jyzyapi.com/api.php/provide/vod",
       "detail": "https://jyzyapi.com"
     },
@@ -285,7 +263,7 @@
       "detail": ""
     },
     "youzhidianying": {
-      "name": "【不可用】优质资源",
+      "name": "优质资源雅兹怀",
       "api": "https://api.yzzy-api.com/inc/ldg_api_all.php/provide/vod",
       "detail": ""
     },
@@ -299,10 +277,6 @@
       "api": "https://www.fantuan.tv/api.php/provide/vod/",
       "detail": ""
     },
-    "tvbox-04eb8237e02963ea36e5eba3": {
-      "name": "【不可用】无广 采集",
-      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json?ac=list"
-    },
     "tvbox-5e9012a3901227d3532187f0": {
       "name": "【不可用】大众",
       "api": "https://cdn.dzzyapi.com/api.php/provide/vod?ac=list"
@@ -315,24 +289,16 @@
       "name": "【不可用】非凡影视",
       "api": "http://ffzy5.tv/api.php/provide/vod?ac=list"
     },
-    "tvbox-188b47e12e6cc37e54ee2dae": {
-      "name": "【不可用】360資源資源",
-      "api": "https://360zy.com/api.php/provide/vod/at/json"
-    },
     "tvbox-b88e9a7d64d1b6f6de43459d": {
       "name": "【不可用】66 360",
       "api": "https://360zy.tv/api.php/provide/vod"
-    },
-    "tvbox-304e2e6a898f6a5843192217": {
-      "name": "【不可用】猫眼影视",
-      "api": "https://api.maoyanapi.top/api.php/provide/vod/from/mym3u8/at/json"
     },
     "tvbox-34d17442bc922533c0aebc04": {
       "name": "【不可用】无尽CC",
       "api": "https://api.wujinapi.cc/api.php/provide/vod"
     },
     "tvbox-90e7454f02d8b46f1b45635a": {
-      "name": "【不可用】优质资源",
+      "name": "优质资源歪歪兹",
       "api": "https://api.yyzy-tv.vip/inc/api_mac10_all.php"
     },
     "tvbox-a44e553153466fe88df19f38": {
@@ -355,29 +321,9 @@
       "name": "【不可用】36 牛牛",
       "api": "https://niuniuzy3.com/api.php/provide/vod"
     },
-    "tvbox-a7aca4b30a7c6c894805af12": {
-      "name": "【不可用】牛牛影视",
-      "api": "https://api.niuniuzy.me/api.php/provide/vod/from/nnm3u8/at/json"
-    },
-    "tvbox-90c4ab7a94f8cc5be2564938": {
-      "name": "【不可用】快车",
-      "api": "https://caiji.kuaichezy.org/api.php/provide/vod?ac=list"
-    },
     "tvbox-e86eec9ebd2867ab9a4c12be": {
       "name": "【不可用】360 采集",
       "api": "https://360zy.com/api.php/provide/vod"
-    },
-    "tvbox-767ef4a77523a900029905d7": {
-      "name": "【不可用】金鷹jyz",
-      "api": "https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/xml"
-    },
-    "tvbox-50149246d7f0f4fbb5c6953d": {
-      "name": "【不可用】U酷影视",
-      "api": "https://api.ukuapi88.com/api.php/provide/vod/from/ukm3u8/at/xml"
-    },
-    "tvbox-f5f6fa9dd82a95a6a4880670": {
-      "name": "【不可用】百度db",
-      "api": "https://api.apibdzy.com/api.php/provide/vod/from/dbm3u8/at/xml"
     },
     "tvbox-bcd6f62ea15b88740bf1128e": {
       "name": "【不可用】OK资源",
@@ -387,30 +333,9 @@
       "name": "【不可用】都司资源",
       "api": "http://y.ds05.cn/zyapi.php"
     },
-    "tvbox-1abe18a0cfa635c4b1a4c4a4": {
-      "name": "【不可用】影视 索尼 直连",
-      "api": "https://suoniapi.com/api.php/provide/vod/at/xml"
-    },
-    "tvbox-a2fcad8e3382cf496a443169": {
-      "name": "【不可用】牛牛资源",
-      "api": "https://api.niuniuzy.me/api.php/provide/vod/at/xml"
-    },
-    "tvbox-1bbd8bef53279ef8d72fcb1e": {
-      "name": "【不可用】牛牛",
-      "api": "https://api.niuniuzy.me/api.php/provide/vod/from/nnm3u8/at/xml"
-    },
-    "tvbox-fa9d471e5171936cad0840e6": {
-      "name": "【不可用】红牛云",
-      "api": "https://www.hongniuzy2.com/api.php/provide/vod/from/hnyun/at/xml"
-    },
     "tvbox-9f84c0615646e2dd1da56475": {
       "name": "【不可用】Clun 在线 茅台 采集",
       "api": "https://mtzy.me/api.php/provide/vod",
-      "disabled": false
-    },
-    "tvbox-975219d8af26d677fb17ebaa": {
-      "name": "【不可用】豆瓣采集2",
-      "api": "https://caiji.dbzy5.com/api.php/provide/vod/from/dbm3u8/at/json",
       "disabled": false
     },
     "tvbox-d94c6e05ab018a5c7cf2682f": {
@@ -418,19 +343,9 @@
       "api": "https://cj.jusj.top/api.php/provide/vod?ac=list",
       "disabled": false
     },
-    "tvbox-f87a5a4f84ba0188d3863cce": {
-      "name": "【不可用】豆瓣影视",
-      "api": "https://caiji.dbzy5.com/api.php/provide/vod/from/dbm3u8/at/xml",
-      "disabled": false
-    },
     "tvbox-dfff5f69688040087c4fa032": {
       "name": "【不可用】火速资源",
       "api": "https://api.huosuapi.cc/api.php/provide/vod",
-      "disabled": false
-    },
-    "tvbox-ea24ce5b4cd4e4894d597ba7": {
-      "name": "【不可用】如意云",
-      "api": "https://cj.rycjapi.com/api.php/provide/vod/from/ruyi/at/xml",
       "disabled": false
     },
     "tvbox-99e23eb5ef9bf1b2ee32b40f": {
@@ -685,37 +600,9 @@
         ]
       }
     },
-    "yszzq-216": {
-      "name": "【不可用】茅台资源站",
-      "api": "https://caiji.maotaizy.cc/api.php/provide/vod/at/josn/"
-    },
-    "yszzq-250": {
-      "name": "【不可用】巨量资源网",
-      "api": "https://api.juliang.live/api/provide/vod/at/xml/"
-    },
-    "yszzq-119": {
-      "name": "【不可用】红牛资源",
-      "api": "https://www.hongniuzy2.com/api.php/provide/vod/at/xml/"
-    },
-    "yszzq-140": {
-      "name": "【不可用】新浪资源采集网",
-      "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/at/xml/"
-    },
     "yszzq-156": {
-      "name": "【不可用】速播资源",
+      "name": "速播资源速博CJ",
       "api": "https://subocj.com/api.php/provide/vod"
-    },
-    "yszzq-230": {
-      "name": "【不可用】虎牙资源采集网",
-      "api": "https://www.huyaapi.com/api.php/provide/vod/at/json"
-    },
-    "yszzq-220": {
-      "name": "【不可用】爱奇艺资源站",
-      "api": "https://www.iqiyizyapi.com/api.php/provide/vod/at/xml/"
-    },
-    "yszzq-207": {
-      "name": "【不可用】豆瓣资源采集站",
-      "api": "https://caiji.dbzy5.com/api.php/provide/vod/at/josn/"
     },
     "yszzq-252": {
       "name": "【不可用】厂长资源",
@@ -732,10 +619,6 @@
     "yszzq-221": {
       "name": "【不可用】天涯影视资源网",
       "api": "https://tyyszyapi.com/api.php/provide/vod/at/xml/?ac=list/"
-    },
-    "yszzq-176": {
-      "name": "【不可用】鸭鸭 丫丫 资源网",
-      "api": "https://cj.yayazy.net/api.php/provide/vod/from/yym3u8/at/xml"
     },
     "yszzq-192": {
       "name": "【不可用】麒麟资源站全站",

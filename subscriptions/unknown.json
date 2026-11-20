@@ -294,11 +294,6 @@
       "api": "https://www.xxibaozyw.com/api.php/provide/vod",
       "detail": ""
     },
-    "tvbox-d5597ba670618a92b45d158f": {
-      "name": "【不可用】鸡坤",
-      "api": "https://jkunzyapi.com/api.php/provide/vod/at/json",
-      "disabled": false
-    },
     "heitao": {
       "name": "【不可用】黑桃",
       "api": "https://heitaodj.com",
