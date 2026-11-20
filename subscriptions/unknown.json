@@ -62,7 +62,7 @@
       "detail": ""
     },
     "beabox": {
-      "name": "笔盒",
+      "name": "【不可用】笔盒",
       "api": "https://bh4066.top",
       "adapter": "beabox",
       "disabled": false,
