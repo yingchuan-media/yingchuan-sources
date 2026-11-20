@@ -65,6 +65,24 @@
       "name": "看看资源",
       "api": "https://f-1.cc/api.php/provide/vod"
     },
+    "dsd": {
+      "name": "帝果",
+      "api": "https://dsd.com.se",
+      "adapter": "dsd",
+      "native": {
+        "version": 1,
+        "description": "分类视频 · 在线搜索",
+        "aliases": [
+          "dsd",
+          "dsd.com.se",
+          "www.dsd.com.se"
+        ],
+        "allowedHosts": [
+          "dsd.com.se",
+          "www.dsd.com.se"
+        ]
+      }
+    },
     "beabox": {
       "name": "【不可用】笔盒",
       "api": "https://bh4066.top",
@@ -88,24 +106,6 @@
         ],
         "description": "最新视频 · 标签分类 · 在线搜索，内容范围待核实",
         "warning": "需要支持 beabox 适配器的新版客户端。仅对配置允许的 HTTPS 域名切换或发现镜像，新增域名需更新订阅并确认。不绕过登录、付费、年龄确认或访问拒绝。当前仅完成合成协议验证，特殊封面封包仅用合成资料验证，未验证真实站源播放。"
-      }
-    },
-    "dsd": {
-      "name": "帝果",
-      "api": "https://dsd.com.se",
-      "adapter": "dsd",
-      "native": {
-        "version": 1,
-        "description": "分类视频 · 在线搜索",
-        "aliases": [
-          "dsd",
-          "dsd.com.se",
-          "www.dsd.com.se"
-        ],
-        "allowedHosts": [
-          "dsd.com.se",
-          "www.dsd.com.se"
-        ]
       }
     },
     "huangguo-video": {

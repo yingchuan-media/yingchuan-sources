@@ -31,27 +31,27 @@
       "detail": "https://www.ryzyw.com"
     },
     "api_1": {
-      "name": "1080资源",
+      "name": "【不可用】1080资源",
       "api": "https://api.1080zyku.com/inc/api_mac10.php",
       "detail": "https://api.1080zyku.com"
     },
     "tvbox-8bda40c7eb0a44ed19d69658": {
-      "name": "柚子影视",
+      "name": "【不可用】柚子影视",
       "api": "https://api.yzzy-api.com/inc/api.php/provide/vod/at/xml",
       "disabled": false
     },
     "lovedan.net": {
-      "name": "艾旦影视",
+      "name": "【不可用】艾旦影视",
       "api": "https://lovedan.net/api.php/provide/vod",
       "detail": "https://lovedan.net"
     },
     "bfzy.tv": {
-      "name": "暴风资源",
+      "name": "【不可用】暴风资源",
       "api": "https://bfzyapi.com/api.php/provide/vod",
       "detail": "https://bfzy.tv"
     },
     "tvbox-a74f697efc5b8180d65982ee": {
-      "name": "11 暴风",
+      "name": "【不可用】11 暴风",
       "api": "http://by.bfzyapi.com/api.php/provide/vod"
     },
     "tvbox-dfaa8e71bccb3d910803980d": {
