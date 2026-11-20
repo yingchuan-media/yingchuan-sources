@@ -110,10 +110,7 @@ func repositoryHealthStep(ctx context.Context, stage string, budget time.Duratio
 	ms := time.Since(started).Milliseconds()
 	outcome := repositoryHealthOutcome{Status: "ok", Message: message, MS: &ms}
 	if err != nil {
-		outcome.Status, outcome.Message = "fail", "原生"+stage+"请求或解析失败: "+err.Error()
-		if len(outcome.Message) > 160 {
-			outcome.Message = outcome.Message[:160]
-		}
+		outcome.Status, outcome.Message = "fail", "原生"+stage+"请求或解析失败"
 		if stepContext.Err() != nil {
 			outcome.Message = "原生" + stage + "超时"
 		}

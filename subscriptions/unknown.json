@@ -91,8 +91,8 @@
       }
     },
     "dsd": {
-      "name": "【不可用】帝果",
-      "api": "https://www.dsd.com.se",
+      "name": "帝果",
+      "api": "https://dsd.com.se",
       "adapter": "dsd",
       "native": {
         "version": 1,
