@@ -10,12 +10,12 @@
 
 | 分类 | 订阅地址 | 来源数 |
 | --- | --- | ---: |
-| 影视 | [subscriptions/film-tv.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/film-tv.json) | 135 |
+| 影视 | [subscriptions/film-tv.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/film-tv.json) | 113 |
 | 短剧 | [subscriptions/short-drama.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/short-drama.json) | 6 |
-| 动漫 | [subscriptions/animation.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/animation.json) | 4 |
-| 未知 | [subscriptions/unknown.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/unknown.json) | 47 |
+| 动漫 | [subscriptions/animation.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/animation.json) | 3 |
+| 未知 | [subscriptions/unknown.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/unknown.json) | 45 |
 
-当前共 **192 项订阅来源，全部默认启用**。数量和检测清单从四份 JSON 逐次生成，随来源新增、移除及名称变更更新。
+当前共 **167 项订阅来源，全部默认启用**。数量和检测清单从四份 JSON 逐次生成，随来源新增、移除及名称变更更新。
 
 <!-- source-inventory:end -->
 
@@ -67,35 +67,30 @@ python -B scripts/test_setup_ffmpeg.py
 
 <!-- source-health:start -->
 
-检测时间：2026-11-20T03:17:05+00:00；共 192 项，四项通过 23 项，含失败 139 项。
+检测时间：2026-11-20T03:17:05+00:00；共 167 项，四项通过 19 项，含失败 120 项。
 
 解码工具：ffmpeg version n9.0.2-17-g2a571b6068-20260930 Copyright (c) 2000-2026 the FFmpeg developers；原生协议核心 3b1d9b0e2e096203cba6156b3aee241033ca4823。延迟为运行节点的目录请求耗时（含 DNS、TLS 与正文），不代表本地延迟。
 
 ✅ 通过 · ❌ 失败 · ⚪ 未验证。封面仅检查 HEAD；播放仅抽样一条线路的第一集和一个片段，首帧通过不保证整片、其他线路、音轨或设备可播。
 
-### 影视（135 项）
+### 影视（113 项）
 
 | 站点 / 稳定键 | 目录 | 封面 | 搜索 | 能否播放 | 目录延迟 |
 | --- | --- | --- | --- | --- | ---: |
 | iKun资源 · ikunzy.com | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 690 ms | ✅ 命中抽样条目 · 711 ms | ✅ 抽样首帧 · 1853 ms | 281 ms |
 | 魔都资源 · www.moduzy.net | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 863 ms | ✅ 命中抽样条目 · 207 ms | ✅ 抽样首帧 · 2299 ms | 449 ms |
 | 樱花资源 · api&#95;26 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 324 ms | ❌ HTTP 403 · 246 ms | ✅ 抽样首帧 · 1459 ms | 405 ms |
-| iKun资源 · tvbox-0cb9919474cc77e7ce42fcc3 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 252 ms | ✅ 命中抽样条目 · 247 ms | ✅ 抽样首帧 · 1299 ms | 178 ms |
 | 魔都影视 · tvbox-669206549ca535a328f57e7b | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 334 ms | ✅ 命中抽样条目 · 1416 ms | ✅ 抽样首帧 · 1601 ms | 2231 ms |
 | IK · tvbox-3c1204193dd947c7b92257f3 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 266 ms | ✅ 命中抽样条目 · 668 ms | ✅ 抽样首帧 · 1353 ms | 204 ms |
 | 无水印资源网 · yszzq-243 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 217 ms | ❌ 无法解析采集目录 · 206 ms | ✅ 抽样首帧 · 769 ms | 423 ms |
 | 如意资源 · www.ryzyw.com | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 703 ms | ✅ 命中抽样条目 · 867 ms | ✅ 抽样首帧 · 1664 ms | 3666 ms |
-| 10 如意 · tvbox-696d3e1521a8c83a093b18ba | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 596 ms | ✅ 命中抽样条目 · 860 ms | ✅ 抽样首帧 · 1669 ms | 3316 ms |
 | 如意 采集 · tvbox-14bb2fa3370824aaffd62d2c | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 193 ms | ✅ 命中抽样条目 · 2481 ms | ✅ 抽样首帧 · 959 ms | 2877 ms |
-| 如意 影视 · tvbox-b21f656b2bad47bf1565f37b | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 935 ms | ✅ 命中抽样条目 · 646 ms | ✅ 抽样首帧 · 1687 ms | 2019 ms |
 | 【不可用】暴风资源 · bfzy.tv | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 2966 ms | ✅ 命中抽样条目 · 553 ms | ❌ HTTP 404 · 1237 ms | 918 ms |
 | 【不可用】1080资源 · api&#95;1 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 1986 ms | ✅ 命中抽样条目 · 511 ms | ❌ HTTP 403 · 3032 ms | 415 ms |
 | 【不可用】11 暴风 · tvbox-a74f697efc5b8180d65982ee | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 2987 ms | ✅ 命中抽样条目 · 588 ms | ❌ HTTP 404 · 1251 ms | 842 ms |
 | 【不可用】量子 影视 · tvbox-43979197c7b5722af879bb11 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 1130 ms | ✅ 命中抽样条目 · 1379 ms | ❌ HTTP 404 · 1382 ms | 3086 ms |
 | 【不可用】暴风影视 · tvbox-9853db9402397d48e6d6cf30 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 497 ms | ✅ 命中抽样条目 · 541 ms | ❌ HTTP 404 · 678 ms | 1350 ms |
-| 【不可用】1080资源库 切 · tvbox-77ba3e2e3d3c7a779ff4a0f6 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 184 ms | ✅ 命中抽样条目 · 360 ms | ❌ HTTP 403 · 1192 ms | 302 ms |
 | 【不可用】柚子影视 · tvbox-8bda40c7eb0a44ed19d69658 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 183 ms | ✅ 命中抽样条目 · 757 ms | ❌ HTTP 403 · 1191 ms | 679 ms |
-| 【不可用】暴风资源网 · yszzq-184 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 482 ms | ✅ 命中抽样条目 · 525 ms | ❌ HTTP 404 · 715 ms | 494 ms |
 | 【不可用】43 HG · tvbox-dfaa8e71bccb3d910803980d | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 303 ms | ✅ 命中抽样条目 · 3203 ms | ❌ HTTP 403 · 2898 ms | 1559 ms |
 | 【不可用】新芒果资源站 · yszzq-251 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 475 ms | ✅ 命中抽样条目 · 582 ms | ⚪ 加密流需客户端验证 | 205 ms |
 | 【不可用】艾旦影视 · lovedan.net | ❌ 拒绝 XML DTD 或实体 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 892 ms |
@@ -148,18 +143,13 @@ python -B scripts/test_setup_ffmpeg.py
 | 【不可用】非凡影视 · tvbox-cc711eefdcf90fb5fe9fbc7f | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 249 ms | ✅ 命中抽样条目 · 146 ms | ❌ HTTP 403 · 1651 ms | 501 ms |
 | 【不可用】360資源資源 · tvbox-188b47e12e6cc37e54ee2dae | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 629 ms | ✅ 命中抽样条目 · 1722 ms | ⚪ 加密流需客户端验证 | 2069 ms |
 | 【不可用】66 360 · tvbox-b88e9a7d64d1b6f6de43459d | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 561 ms | ✅ 命中抽样条目 · 2204 ms | ⚪ 加密流需客户端验证 | 1927 ms |
-| 【不可用】新浪资源 · tvbox-0cc0c68257fe9ed89031021c | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 207 ms | ✅ 命中抽样条目 · 117 ms | ❌ 网络错误或地址无效 · 8021 ms | 244 ms |
 | 【不可用】猫眼影视 · tvbox-304e2e6a898f6a5843192217 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 279 ms | ✅ 命中抽样条目 · 1169 ms | ❌ 网络错误或地址无效 · 268 ms | 1449 ms |
 | 【不可用】无尽CC · tvbox-34d17442bc922533c0aebc04 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 47 ms | ✅ 命中抽样条目 · 223 ms | ❌ HTTP 403 · 494 ms | 438 ms |
-| 【不可用】量子资源 · tvbox-9cf20ece248500aa508bc59c | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 813 ms | ✅ 命中抽样条目 · 1570 ms | ❌ HTTP 404 · 1018 ms | 2232 ms |
 | 【不可用】优质资源 · tvbox-90e7454f02d8b46f1b45635a | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 637 ms | ✅ 命中抽样条目 · 606 ms | ❌ HTTP 403 · 1625 ms | 335 ms |
 | 【不可用】接口 猫眼影视 · tvbox-a44e553153466fe88df19f38 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 173 ms | ✅ 命中抽样条目 · 712 ms | ❌ 网络错误或地址无效 · 199 ms | 423 ms |
 | 【不可用】天涯 · tvbox-1762139b6c36f5f15f3a311c | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 213 ms | ❌ 无法解析采集目录 · 1074 ms | ❌ 网络错误或地址无效 · 8001 ms | 1382 ms |
-| 【不可用】茅台资源 · tvbox-c110b1db39b98042d7241daa | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 460 ms | ❌ 采集接口返回错误 · 583 ms | ❌ 网络错误或地址无效 · 251 ms | 2057 ms |
 | 【不可用】62 秒播 · tvbox-fd46d56492b1499d2343f829 | ✅ 有效目录 | ❌ 网络错误或地址无效 · 8001 ms | ✅ 命中抽样条目 · 918 ms | ❌ 网络错误或地址无效 · 246 ms | 2819 ms |
-| 【不可用】64 牛牛 · tvbox-a9e4bb24a20f8020831c6860 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 59 ms | ❌ 无法解析采集目录 · 232 ms | ❌ HTTP 403 · 251 ms | 248 ms |
 | 【不可用】63 丫丫 · tvbox-d35beaa99199aad75ffb3a9b | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 45 ms | ❌ 无法解析采集目录 · 218 ms | ❌ HTTP 403 · 232 ms | 320 ms |
-| 【不可用】鸭鸭资源 · tvbox-93d46dd0b6dfd47970726eb2 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 45 ms | ❌ 无法解析采集目录 · 228 ms | ❌ HTTP 403 · 244 ms | 251 ms |
 | 【不可用】36 牛牛 · tvbox-ebc3f498b660108843cf05ef | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 90 ms | ❌ 无法解析采集目录 · 162 ms | ❌ HTTP 403 · 230 ms | 342 ms |
 | 【不可用】牛牛影视 · tvbox-a7aca4b30a7c6c894805af12 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 45 ms | ❌ 无法解析采集目录 · 138 ms | ❌ HTTP 403 · 245 ms | 388 ms |
 | 【不可用】快车 · tvbox-90c4ab7a94f8cc5be2564938 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 177 ms | ❌ 无法解析采集目录 · 189 ms | ❌ HTTP 403 · 737 ms | 241 ms |
@@ -177,10 +167,8 @@ python -B scripts/test_setup_ffmpeg.py
 | 【不可用】Clun 在线 茅台 采集 · tvbox-9f84c0615646e2dd1da56475 | ❌ TLS 验证失败 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 662 ms |
 | 【不可用】豆瓣采集2 · tvbox-975219d8af26d677fb17ebaa | ❌ 网络错误或地址无效 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 161 ms |
 | 【不可用】官采 采集 · tvbox-d94c6e05ab018a5c7cf2682f | ❌ 网络错误或地址无效 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 217 ms |
-| 【不可用】ckzyCK资源 · tvbox-81f906d22adf7f16cc9b14e5 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 38 ms | ✅ 命中抽样条目 · 276 ms | ⚪ 加密流需客户端验证 | 235 ms |
 | 【不可用】豆瓣影视 · tvbox-f87a5a4f84ba0188d3863cce | ❌ 网络错误或地址无效 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 155 ms |
 | 【不可用】火速资源 · tvbox-dfff5f69688040087c4fa032 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 87 ms | ✅ 命中抽样条目 · 130 ms | ❌ 有界样本未解码首帧 · 336 ms | 145 ms |
-| 【不可用】55 最大 · tvbox-7d6472ada2ff87784efca9ec | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 45 ms | ✅ 命中抽样条目 · 221 ms | ❌ HTTP 403 · 459 ms | 220 ms |
 | 【不可用】如意云 · tvbox-ea24ce5b4cd4e4894d597ba7 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 641 ms | ✅ 命中抽样条目 · 904 ms | ⚪ 网页、解析或 DASH 协议需客户端验证 | 2315 ms |
 | 【不可用】柚子资源 · tvbox-99e23eb5ef9bf1b2ee32b40f | ✅ 有效目录 | ⚪ 未提供封面地址 | ✅ 命中抽样条目 · 377 ms | ⚪ 未提供播放地址 | 359 ms |
 | 【不可用】韩小圈 · hanxiaoquan | ✅ 客户端原生目录有效 | ✅ 仅 HEAD 可达 · 638 ms | ❌ 原生搜索请求或解析失败 · 224 ms | ❌ 原生播放请求或解析失败 · 2104 ms | 753 ms |
@@ -190,27 +178,17 @@ python -B scripts/test_setup_ffmpeg.py
 | 【不可用】茅台资源站 · yszzq-216 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 467 ms | ❌ 采集接口返回错误 · 589 ms | ❌ 网络错误或地址无效 · 3 ms | 1845 ms |
 | 【不可用】巨量资源网 · yszzq-250 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 1012 ms | ✅ 命中抽样条目 · 932 ms | ❌ HTTP 403 · 947 ms | 2262 ms |
 | 【不可用】红牛资源 · yszzq-119 | ✅ 有效目录 | ❌ 网络错误或地址无效 · 8015 ms | ✅ 命中抽样条目 · 274 ms | ⚪ 网页、解析或 DASH 协议需客户端验证 | 468 ms |
-| 【不可用】光速资源站 · yszzq-135 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 195 ms | ❌ HTTP 403 · 46 ms | ❌ 网络错误或地址无效 · 8021 ms | 169 ms |
 | 【不可用】新浪资源采集网 · yszzq-140 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 195 ms | ✅ 命中抽样条目 · 580 ms | ❌ 网络错误或地址无效 · 8021 ms | 598 ms |
 | 【不可用】速播资源 · yszzq-156 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 195 ms | ✅ 命中抽样条目 · 802 ms | ❌ 网络错误或地址无效 · 8021 ms | 1265 ms |
-| 【不可用】豪华资源网 · yszzq-180 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 274 ms | ✅ 命中抽样条目 · 48 ms | ❌ 网络错误或地址无效 · 8020 ms | 337 ms |
 | 【不可用】虎牙资源采集网 · yszzq-230 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 396 ms | ❌ HTTP 403 · 37 ms | ❌ 网络错误或地址无效 · 8021 ms | 145 ms |
 | 【不可用】爱奇艺资源站 · yszzq-220 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 244 ms | ✅ 命中抽样条目 · 2323 ms | ❌ 网络错误或地址无效 · 20 ms | 2086 ms |
 | 【不可用】豆瓣资源采集站 · yszzq-207 | ❌ 网络错误或地址无效 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 148 ms |
 | 【不可用】厂长资源 · yszzq-252 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 1291 ms | ✅ 命中抽样条目 · 661 ms | ⚪ 网页、解析或 DASH 协议需客户端验证 | 3362 ms |
 | 【不可用】西瓜资源 · yszzq-244 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 200 ms | ✅ 命中抽样条目 · 208 ms | ⚪ 网页、解析或 DASH 协议需客户端验证 | 460 ms |
-| 【不可用】猫眼资源站 · yszzq-224 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 295 ms | ✅ 命中抽样条目 · 742 ms | ❌ 网络错误或地址无效 · 62 ms | 1465 ms |
 | 【不可用】优质资源库 · yszzq-149 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 632 ms | ✅ 命中抽样条目 · 487 ms | ❌ HTTP 403 · 1662 ms | 851 ms |
-| 【不可用】U酷资源网 · yszzq-127 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 42 ms | ✅ 命中抽样条目 · 410 ms | ❌ HTTP 403 · 1242 ms | 412 ms |
-| 【不可用】最大资源网 · yszzq-236 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 46 ms | ✅ 命中抽样条目 · 324 ms | ❌ HTTP 403 · 234 ms | 312 ms |
 | 【不可用】天涯影视资源网 · yszzq-221 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 187 ms | ❌ 无法解析采集目录 · 146 ms | ❌ 网络错误或地址无效 · 8001 ms | 217 ms |
-| 【不可用】电影天堂 · yszzq-218 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 193 ms | ✅ 命中抽样条目 · 131 ms | ❌ HTTP 403 · 1758 ms | 416 ms |
 | 【不可用】鸭鸭 丫丫 资源网 · yszzq-176 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 47 ms | ❌ 无法解析采集目录 · 135 ms | ❌ HTTP 403 · 478 ms | 415 ms |
-| 【不可用】360资源站 · yszzq-166 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 547 ms | ✅ 命中抽样条目 · 273 ms | ⚪ 加密流需客户端验证 | 368 ms |
-| 【不可用】极速资源网 · yszzq-183 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 317 ms | ❌ HTTP 403 · 42 ms | ❌ TLS 验证失败 · 21 ms | 85 ms |
-| 【不可用】非凡资源网 · yszzq-186 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 207 ms | ✅ 命中抽样条目 · 597 ms | ❌ HTTP 403 · 1639 ms | 994 ms |
 | 【不可用】麒麟资源站全站 · yszzq-192 | ❌ 无法解析采集目录 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 286 ms |
-| 【不可用】无尽资源网 · yszzq-195 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 69 ms | ✅ 命中抽样条目 · 445 ms | ❌ HTTP 403 · 480 ms | 158 ms |
 | 【不可用】1717云资源网采集api · yszzq-112 | ❌ 网络错误或地址无效 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 20 ms |
 
 ### 短剧（6 项）
@@ -224,16 +202,15 @@ python -B scripts/test_setup_ffmpeg.py
 | 【不可用】黄果AI · huangguoai | ✅ 客户端原生目录有效 | ⚪ 封面响应头未证明图片类型 · 756 ms | ✅ 客户端原生搜索命中 · 310 ms | ❌ 原生播放请求或解析失败 · 483 ms | 7685 ms |
 | 【不可用】禁果 · jinguo | ✅ 客户端原生目录有效 | ⚪ 封面响应头未证明图片类型 · 234 ms | ✅ 客户端原生搜索命中 · 289 ms | ⚪ 加密或范围媒体已解析，需客户端验证 · 666 ms | 5981 ms |
 
-### 动漫（4 项）
+### 动漫（3 项）
 
 | 站点 / 稳定键 | 目录 | 封面 | 搜索 | 能否播放 | 目录延迟 |
 | --- | --- | --- | --- | --- | ---: |
 | 魔都动漫 · caiji.moduapi.cc | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 829 ms | ✅ 命中抽样条目 · 189 ms | ✅ 抽样首帧 · 2758 ms | 369 ms |
-| 34 魔都 · tvbox-b7990671ab43eae391b9e2cc | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 521 ms | ✅ 命中抽样条目 · 314 ms | ✅ 抽样首帧 · 2814 ms | 170 ms |
 | 魔都动漫资源采集网 · yszzq-181 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 269 ms | ✅ 命中抽样条目 · 309 ms | ✅ 抽样首帧 · 2381 ms | 191 ms |
 | 【不可用】青空 · sorani | ✅ 客户端原生目录有效 | ✅ 仅 HEAD 可达 · 378 ms | ✅ 客户端原生搜索命中 · 420 ms | ⚪ 需要来源账号授权 · 363 ms | 580 ms |
 
-### 未知（47 项）
+### 未知（45 项）
 
 | 站点 / 稳定键 | 目录 | 封面 | 搜索 | 能否播放 | 目录延迟 |
 | --- | --- | --- | --- | --- | ---: |
@@ -281,8 +258,4 @@ python -B scripts/test_setup_ffmpeg.py
 | 【不可用】细胞采集 · xibaocaiji | ❌ 网络错误或地址无效 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | ⚪ 目录不可用，未检测 | 106 ms |
 | 【不可用】鸡坤 · tvbox-d5597ba670618a92b45d158f | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 208 ms | ✅ 命中抽样条目 · 971 ms | ⚪ 加密流需客户端验证 | 336 ms |
 | 【不可用】黑桃 · heitao | ✅ 客户端原生目录有效 | ✅ 仅 HEAD 可达 · 323 ms | ✅ 客户端原生搜索命中 · 332 ms | ⚪ 需要本人访问确认 · 596 ms | 821 ms |
-| 【不可用】星夜资源站 · yszzq-254 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 392 ms | ✅ 命中抽样条目 · 645 ms | ⚪ 加密流需客户端验证 | 496 ms |
-| 【不可用】黑料资源网 · yszzq-233 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 56 ms | ✅ 命中抽样条目 · 1585 ms | ❌ 禁止读取图片正文 · 452 ms | 1468 ms |
-| 【不可用】奶香香资源站 · yszzq-185 | ✅ 有效目录 | ⚪ 封面响应头非图片，未读取正文 · 231 ms | ❌ 无法解析采集目录 · 1089 ms | ⚪ 加密流需客户端验证 | 2148 ms |
-
-<!-- source-health:end -->
+| 【不可用】星夜资源站 · yszzq-254 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 392 ms | ✅ 命中抽样条目 · 645 ms | ⚪ 加密流需客户端验证 | 496 ms |<!-- source-health:end -->

@@ -321,14 +321,6 @@
     "yszzq-254": {
       "name": "【不可用】星夜资源站",
       "api": "https://xyezy.com/api.php/provide/vod/?ac=list"
-    },
-    "yszzq-233": {
-      "name": "【不可用】黑料资源网",
-      "api": "https://www.heiliaozyapi.com/api.php/provide/vod/"
-    },
-    "yszzq-185": {
-      "name": "【不可用】奶香香资源站",
-      "api": "https://Naixxzy.com/api.php/provide/vod/"
     }
   }
 }
