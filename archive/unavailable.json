@@ -1,5 +1,5 @@
 {
-  "last_checked_at": "2026-11-20T15:09:04+00:00",
+  "last_checked_at": "2026-11-20T15:13:32+00:00",
   "pending": {
     "dbzy.tv": {
       "fingerprint": "9005f43fd437c5fb29af4ba091cadb88aa05257050ef192c25e5e2686a1de8cb",
@@ -86,11 +86,6 @@
       "first_failed": "2026-11-19",
       "last_failed": "2026-11-20"
     },
-    "jinguoduanju": {
-      "fingerprint": "3a5b2f138a677af26a2d11db8f7dd4116476c713323698e135e01fd8058ee82c",
-      "first_failed": "2026-11-20",
-      "last_failed": "2026-11-20"
-    },
     "dsd": {
       "fingerprint": "5c2c7f90d1bcaceb68ddc7277c87eaca5f0eb3009182eef4b559b707790a3b47",
       "first_failed": "2026-11-20",
@@ -124,6 +119,11 @@
     "www.yyzywcj.com": {
       "fingerprint": "2bc2180a9d772c53fb33cd516176ecc7b2e5430bd4d028921e692fad820a9774",
       "first_failed": "2026-11-19",
+      "last_failed": "2026-11-20"
+    },
+    "hsckzy.xyz": {
+      "fingerprint": "daf08624237988c500ed6b296cf42051b500f98c9f09d686644d97a00331cd74",
+      "first_failed": "2026-11-20",
       "last_failed": "2026-11-20"
     },
     "xzytv.com": {

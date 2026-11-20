@@ -31,17 +31,17 @@
       "detail": "https://www.ryzyw.com"
     },
     "api_1": {
-      "name": "1080资源",
+      "name": "【不可用】1080资源",
       "api": "https://api.1080zyku.com/inc/api_mac10.php",
       "detail": "https://api.1080zyku.com"
     },
     "tvbox-8bda40c7eb0a44ed19d69658": {
-      "name": "柚子影视",
+      "name": "【不可用】柚子影视",
       "api": "https://api.yzzy-api.com/inc/api.php/provide/vod/at/xml",
       "disabled": false
     },
     "lovedan.net": {
-      "name": "艾旦影视",
+      "name": "【不可用】艾旦影视",
       "api": "https://lovedan.net/api.php/provide/vod",
       "detail": "https://lovedan.net"
     },
