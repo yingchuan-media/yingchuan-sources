@@ -13,9 +13,9 @@
 | 影视 | [subscriptions/film-tv.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/film-tv.json) | 85 |
 | 短剧 | [subscriptions/short-drama.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/short-drama.json) | 6 |
 | 动漫 | [subscriptions/animation.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/animation.json) | 3 |
-| 未知 | [subscriptions/unknown.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/unknown.json) | 44 |
+| 未知 | [subscriptions/unknown.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/unknown.json) | 45 |
 
-当前共 **138 项订阅来源，全部默认启用**。数量和检测清单从四份 JSON 逐次生成，随来源新增、移除及名称变更更新。
+当前共 **139 项订阅来源，全部默认启用**。数量和检测清单从四份 JSON 逐次生成，随来源新增、移除及名称变更更新。
 
 <!-- source-inventory:end -->
 
@@ -67,7 +67,7 @@ python -B scripts/test_setup_ffmpeg.py
 
 <!-- source-health:start -->
 
-检测时间：2026-11-20T08:40:19+00:00；原检测共 167 项，四项通过 28 项，含失败 100 项；本次移除 29 项重复来源后保留历史检测结果。
+检测时间：2026-11-20T08:40:19+00:00；原检测共 167 项，四项通过 28 项，含失败 100 项；本次移除 29 项重复来源、新增 1 项未知分类来源后保留历史检测结果。
 
 解码工具：ffmpeg version n9.0.2-17-g2a571b6068-20260930 Copyright (c) 2000-2026 the FFmpeg developers；原生协议核心 3b1d9b0e2e096203cba6156b3aee241033ca4823。延迟为运行节点的目录请求耗时（含 DNS、TLS 与正文），不代表本地延迟。
 
@@ -182,7 +182,7 @@ python -B scripts/test_setup_ffmpeg.py
 | 魔都动漫资源采集网 · yszzq-181 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 157 ms | ✅ 命中抽样条目 · 149 ms | ✅ 抽样首帧 · 672 ms | 218 ms |
 | 【不可用】青空 · sorani | ✅ 客户端原生目录有效 | ✅ 仅 HEAD 可达 · 548 ms | ✅ 客户端原生搜索命中 · 571 ms | ⚪ 需要来源账号授权 · 422 ms | 991 ms |
 
-### 未知（44 项）
+### 未知（45 项）
 
 | 站点 / 稳定键 | 目录 | 封面 | 搜索 | 能否播放 | 目录延迟 |
 | --- | --- | --- | --- | --- | ---: |
@@ -231,4 +231,5 @@ python -B scripts/test_setup_ffmpeg.py
 | 【不可用】黑桃 · heitao | ✅ 客户端原生目录有效 | ✅ 仅 HEAD 可达 · 279 ms | ✅ 客户端原生搜索命中 · 196 ms | ⚪ 需要本人访问确认 · 434 ms | 573 ms |
 | 【不可用】星夜资源站 · yszzq-254 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 416 ms | ✅ 命中抽样条目 · 950 ms | ⚪ 加密流需客户端验证 | 875 ms |
 
+| 看看资源 · f-1.cc | ⚪ 新增待检测 | ⚪ 未检测 | ⚪ 未检测 | ⚪ 未检测 | 未检测 |
 <!-- source-health:end -->

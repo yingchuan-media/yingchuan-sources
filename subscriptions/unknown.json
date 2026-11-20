@@ -316,6 +316,10 @@
     "yszzq-254": {
       "name": "【不可用】星夜资源站",
       "api": "https://xyezy.com/api.php/provide/vod/?ac=list"
+    },
+    "f-1.cc": {
+      "name": "看看资源",
+      "api": "https://f-1.cc/api.php/provide/vod"
     }
   }
 }
