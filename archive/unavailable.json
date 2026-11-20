@@ -1,5 +1,5 @@
 {
-  "last_checked_at": "2026-11-20T03:17:05+00:00",
+  "last_checked_at": "2026-11-20T08:40:19+00:00",
   "pending": {
     "lovedan.net": {
       "fingerprint": "264db36492b6c3e76d08e821414a74d49da92d30601c20efbf177c9c3bffe9a9",
@@ -66,6 +66,11 @@
       "first_failed": "2026-11-19",
       "last_failed": "2026-11-20"
     },
+    "tvbox-bcd6f62ea15b88740bf1128e": {
+      "fingerprint": "28e87501cdea59848fee5b4e6a79b12ec9d3e4eea0e821ca6ea834eae8e3fe0a",
+      "first_failed": "2026-11-20",
+      "last_failed": "2026-11-20"
+    },
     "tvbox-9f84c0615646e2dd1da56475": {
       "fingerprint": "605c6aca06ff21535456c0e161a8038aeca0cfd51f8c5fee846e1df0e25ff63e",
       "first_failed": "2026-11-19",
@@ -84,6 +89,11 @@
     "tvbox-f87a5a4f84ba0188d3863cce": {
       "fingerprint": "056180643a70b86ad304302c23c4b1fd941685350c6931ad77fae11f2179625a",
       "first_failed": "2026-11-19",
+      "last_failed": "2026-11-20"
+    },
+    "hanxiaoquan": {
+      "fingerprint": "59f713cf9ebef3d61dc0b9a31d3abffaf3757cbe581254c528a1104923411f19",
+      "first_failed": "2026-11-20",
       "last_failed": "2026-11-20"
     },
     "yszzq-207": {
@@ -134,11 +144,6 @@
     "www.yyzywcj.com": {
       "fingerprint": "2bc2180a9d772c53fb33cd516176ecc7b2e5430bd4d028921e692fad820a9774",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-20"
-    },
-    "hsckzy.xyz": {
-      "fingerprint": "daf08624237988c500ed6b296cf42051b500f98c9f09d686644d97a00331cd74",
-      "first_failed": "2026-11-20",
       "last_failed": "2026-11-20"
     },
     "xzytv.com": {
