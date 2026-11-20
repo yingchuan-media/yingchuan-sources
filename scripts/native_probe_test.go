@@ -110,7 +110,10 @@ func repositoryHealthStep(ctx context.Context, stage string, budget time.Duratio
 	ms := time.Since(started).Milliseconds()
 	outcome := repositoryHealthOutcome{Status: "ok", Message: message, MS: &ms}
 	if err != nil {
-		outcome.Status, outcome.Message = "fail", "原生"+stage+"请求或解析失败"
+		outcome.Status, outcome.Message = "fail", "原生"+stage+"请求或解析失败: "+err.Error()
+		if len(outcome.Message) > 160 {
+			outcome.Message = outcome.Message[:160]
+		}
 		if stepContext.Err() != nil {
 			outcome.Message = "原生" + stage + "超时"
 		}
@@ -288,7 +291,10 @@ func repositoryHealthProbe(ctx context.Context, engine *nativeEngine, input repo
 		if err == nil && len(page.Items) == 0 {
 			err = errors.New("empty catalog")
 		}
-		return "客户端原生目录有效", err
+		if err != nil {
+			return "", fmt.Errorf("client catalog: %w", err)
+		}
+		return "客户端原生目录有效", nil
 	})
 	if result["catalog"].Status != "ok" {
 		return result
