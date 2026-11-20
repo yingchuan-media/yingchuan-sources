@@ -11,7 +11,7 @@
       "api": "https://www.mdzyapi.com/api.php/provide/vod/at/xml/"
     },
     "sorani": {
-      "name": "【不可用】青空",
+      "name": "青空",
       "api": "https://www.sorani.net",
       "adapter": "sorani",
       "native": {

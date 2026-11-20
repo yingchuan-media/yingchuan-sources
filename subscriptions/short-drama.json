@@ -66,7 +66,7 @@
       }
     },
     "huangdou": {
-      "name": "【不可用】黄豆",
+      "name": "黄豆",
       "api": "https://ferncider.cc",
       "adapter": "huangdou",
       "native": {
@@ -104,7 +104,7 @@
       }
     },
     "yeguo": {
-      "name": "【不可用】野果",
+      "name": "野果",
       "api": "https://analyze.buxefaex.cc",
       "adapter": "yeguo",
       "native": {
@@ -149,7 +149,7 @@
       }
     },
     "huangguoai": {
-      "name": "【不可用】黄果AI",
+      "name": "黄果AI",
       "api": "https://huangguoai.com",
       "adapter": "huangguoai",
       "native": {
@@ -202,7 +202,7 @@
       }
     },
     "jinguo": {
-      "name": "【不可用】禁果",
+      "name": "禁果",
       "api": "https://d1wyuxwdrlykj1.cloudfront.net",
       "adapter": "jinguo",
       "native": {

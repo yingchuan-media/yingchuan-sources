@@ -31,330 +31,245 @@
       "detail": "https://www.ryzyw.com"
     },
     "api_1": {
-      "name": "【不可用】1080资源",
+      "name": "1080资源",
       "api": "https://api.1080zyku.com/inc/api_mac10.php",
       "detail": "https://api.1080zyku.com"
     },
     "tvbox-8bda40c7eb0a44ed19d69658": {
-      "name": "【不可用】柚子影视",
+      "name": "柚子影视",
       "api": "https://api.yzzy-api.com/inc/api.php/provide/vod/at/xml",
       "disabled": false
     },
     "lovedan.net": {
-      "name": "【不可用】艾旦影视",
+      "name": "艾旦影视",
       "api": "https://lovedan.net/api.php/provide/vod",
       "detail": "https://lovedan.net"
     },
     "bfzy.tv": {
-      "name": "【不可用】暴风资源",
+      "name": "暴风资源",
       "api": "https://bfzyapi.com/api.php/provide/vod",
       "detail": "https://bfzy.tv"
     },
     "tvbox-a74f697efc5b8180d65982ee": {
-      "name": "【不可用】11 暴风",
+      "name": "11 暴风",
       "api": "http://by.bfzyapi.com/api.php/provide/vod"
     },
     "tvbox-dfaa8e71bccb3d910803980d": {
-      "name": "【不可用】43 HG",
+      "name": "43 HG",
       "api": "https://hong.hgyx.vip/api.php/provide/vod"
     },
     "yszzq-251": {
-      "name": "【不可用】新芒果资源站",
+      "name": "新芒果资源站",
       "api": "https://caiji.mgzyapi.com/api.php/provide/vod/at/xml/"
     },
-    "iqiyizyapi.com": {
-      "name": "【不可用】爱奇艺",
-      "api": "https://iqiyizyapi.com/api.php/provide/vod",
-      "detail": "https://iqiyizyapi.com"
-    },
-    "dbzy.tv": {
-      "name": "【不可用】豆瓣资源",
-      "api": "https://caiji.dbzy5.com/api.php/provide/vod",
-      "detail": "https://dbzy.tv"
-    },
     "tyyszy.com": {
-      "name": "【不可用】天涯影视",
+      "name": "天涯影视",
       "api": "https://tyyszy.com/api.php/provide/vod",
       "detail": "https://tyyszy.com"
     },
     "mtzy.me": {
-      "name": "【不可用】茅台资源",
+      "name": "茅台资源",
       "api": "https://caiji.maotaizy.cc/api.php/provide/vod",
       "detail": "https://mtzy.me"
     },
-    "wolongzyw.com": {
-      "name": "【不可用】卧龙资源",
-      "api": "https://wolongzyw.com/api.php/provide/vod",
-      "detail": "https://wolongzyw.com"
-    },
     "dyttzyapi.com": {
-      "name": "【不可用】电影天堂",
+      "name": "电影天堂",
       "api": "http://caiji.dyttzyapi.com/api.php/provide/vod",
       "detail": "http://caiji.dyttzyapi.com"
     },
     "www.maoyanzy.com": {
-      "name": "【不可用】猫眼资源",
+      "name": "猫眼资源",
       "api": "https://api.maoyanapi.top/api.php/provide/vod",
       "detail": "https://www.maoyanzy.com"
     },
     "cj.lzcaiji.com": {
-      "name": "【不可用】量子资源",
+      "name": "量子资源",
       "api": "https://cj.lzcaiji.com/api.php/provide/vod",
       "detail": "https://cj.lzcaiji.com"
     },
     "360zy.com": {
-      "name": "【不可用】360资源",
+      "name": "360资源",
       "api": "https://360zyzz.com/api.php/provide/vod",
       "detail": "https://360zy.com"
     },
     "jszyapi.com": {
-      "name": "【不可用】极速资源",
+      "name": "极速资源",
       "api": "https://jszyapi.com/api.php/provide/vod",
       "detail": "https://jszyapi.com"
     },
     "ffzyapi.com": {
-      "name": "【不可用】非凡资源",
+      "name": "非凡资源",
       "api": "https://api.ffzyapi.com/api.php/provide/vod",
       "detail": "https://cj.ffzyapi.com"
     },
     "zuida.xyz": {
-      "name": "【不可用】最大资源",
+      "name": "最大资源",
       "api": "https://api.zuidapi.com/api.php/provide/vod",
       "detail": "https://zuida.xyz"
     },
     "wujinzy.me": {
-      "name": "【不可用】无尽资源",
+      "name": "无尽资源",
       "api": "https://api.wujinapi.me/api.php/provide/vod",
       "detail": "https://wujinzy.com"
     },
     "xinlangapi.com": {
-      "name": "【不可用】新浪资源",
+      "name": "新浪资源",
       "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod",
       "detail": "https://xinlangapi.com"
     },
     "www.subozy.com": {
-      "name": "【不可用】速播资源速博采集",
+      "name": "速播资源速博采集",
       "api": "https://subocaiji.com/api.php/provide/vod",
       "detail": "https://www.subozy.com"
     },
     "jinyingzy.com": {
-      "name": "【不可用】金鹰资源金鹰",
+      "name": "金鹰资源金鹰",
       "api": "https://jinyingzy.com/api.php/provide/vod",
       "detail": "https://jinyingzy.com"
     },
-    "p2100.net": {
-      "name": "【不可用】飘零资源",
-      "api": "https://p2100.net/api.php/provide/vod",
-      "detail": "https://p2100.net"
-    },
     "api.ukuapi88.com": {
-      "name": "【不可用】U酷资源",
+      "name": "U酷资源",
       "api": "https://api.ukuapi88.com/api.php/provide/vod",
       "detail": "https://www.ukuzy.com"
     },
     "api.guangsuapi.com": {
-      "name": "【不可用】光速资源",
+      "name": "光速资源",
       "api": "https://api.guangsuapi.com/api.php/provide/vod",
       "detail": "https://api.guangsuapi.com"
     },
     "www.hongniuzy.com": {
-      "name": "【不可用】红牛资源",
+      "name": "红牛资源",
       "api": "https://www.hongniuzy2.com/api.php/provide/vod",
       "detail": "https://www.hongniuzy.com"
     },
     "www.haohuazy.com": {
-      "name": "【不可用】豪华资源",
+      "name": "豪华资源",
       "api": "https://hhzyapi.com/api.php/provide/vod",
       "detail": "https://www.haohuazy.com"
     },
     "bdzy1.com": {
-      "name": "【不可用】百度云资源",
+      "name": "百度云资源",
       "api": "https://api.apibdzy.com/api.php/provide/vod",
       "detail": "https://bdzy1.com"
     },
     "api_4": {
-      "name": "【不可用】CK资源",
+      "name": "CK资源",
       "api": "https://ckzy.me/api.php/provide/vod",
       "detail": "https://ckzy.me"
     },
     "api_9": {
-      "name": "【不可用】丫丫点播",
+      "name": "丫丫点播",
       "api": "https://cj.yayazy.net/api.php/provide/vod",
       "detail": "https://cj.yayazy.net"
     },
-    "api_16": {
-      "name": "【不可用】小猫咪资源",
-      "api": "https://zy.xmm.hk/api.php/provide/vod",
-      "detail": "https://zy.xmm.hk"
-    },
     "api_24": {
-      "name": "【不可用】最大点播",
+      "name": "最大点播",
       "api": "http://zuidazy.me/api.php/provide/vod",
       "detail": "http://zuidazy.me"
     },
-    "api_27": {
-      "name": "【不可用】步步高资源",
-      "api": "https://api.yparse.com/api/json",
-      "detail": ""
-    },
     "api_28": {
-      "name": "【不可用】牛牛点播",
+      "name": "牛牛点播",
       "api": "https://api.niuniuzy.me/api.php/provide/vod",
       "detail": "https://api.niuniuzy.me"
     },
     "api_33": {
-      "name": "【不可用】索尼资源",
+      "name": "索尼资源",
       "api": "https://suoniapi.com/api.php/provide/vod",
       "detail": ""
     },
     "api_36": {
-      "name": "【不可用】虎牙资源",
+      "name": "虎牙资源",
       "api": "https://www.huyaapi.com/api.php/provide/vod",
       "detail": "https://www.huyaapi.com"
     },
     "api_41": {
-      "name": "【不可用】量子资源2",
+      "name": "量子资源2",
       "api": "https://cj.lziapi.com/api.php/provide/vod",
       "detail": ""
     },
     "api_43": {
-      "name": "【不可用】金鹰资源集影",
+      "name": "金鹰资源集影",
       "api": "https://jyzyapi.com/api.php/provide/vod",
       "detail": "https://jyzyapi.com"
     },
     "api_44": {
-      "name": "【不可用】闪电资源",
+      "name": "闪电资源",
       "api": "https://sdzyapi.com/api.php/provide/vod",
       "detail": "https://sdzyapi.com"
     },
-    "api_47": {
-      "name": "【不可用】魔爪资源",
-      "api": "https://mozhuazy.com/api.php/provide/vod",
-      "detail": "https://mozhuazy.com"
-    },
-    "kauiboziyuan": {
-      "name": "【不可用】快播资源",
-      "api": "https://gayapi.com/api.php/provide/vod",
-      "detail": ""
-    },
-    "huaweiba": {
-      "name": "【不可用】华为吧资源",
-      "api": "https://huawei8.live/api.php/provide/vod",
-      "detail": ""
-    },
-    "taopian": {
-      "name": "【不可用】淘片资源",
-      "api": "https://taopianapi.com/cjapi/sda/vod",
-      "detail": ""
-    },
-    "fengchao": {
-      "name": "【不可用】蜂巢片库",
-      "api": "https://api.fczy888.me/api.php/provide/vod",
-      "detail": ""
-    },
-    "jinmaziyuan2": {
-      "name": "【不可用】金马资源",
-      "api": "https://api.jmzy.com/api.php/provide/vod",
-      "detail": ""
-    },
-    "kauicheziyuan": {
-      "name": "【不可用】快车资源",
-      "api": "https://caiji.kuaichezy.org/api.php/provide",
-      "detail": ""
-    },
     "youzhidianying": {
-      "name": "【不可用】优质资源雅兹怀",
+      "name": "优质资源雅兹怀",
       "api": "https://api.yzzy-api.com/inc/ldg_api_all.php/provide/vod",
       "detail": ""
     },
-    "qiqiqiqi": {
-      "name": "【不可用】七七影视",
-      "api": "https://www.qiqidys.com/api.php/provide/vod/",
-      "detail": ""
-    },
-    "fantuanyingshi": {
-      "name": "【不可用】饭团影视",
-      "api": "https://www.fantuan.tv/api.php/provide/vod/",
-      "detail": ""
-    },
     "tvbox-5e9012a3901227d3532187f0": {
-      "name": "【不可用】大众",
+      "name": "大众",
       "api": "https://cdn.dzzyapi.com/api.php/provide/vod?ac=list"
     },
     "tvbox-4e0f32710feb8de77edad170": {
-      "name": "【不可用】巨量",
+      "name": "巨量",
       "api": "https://api.juliang.live/api/provide/vod?ac=detail"
     },
     "tvbox-cc711eefdcf90fb5fe9fbc7f": {
-      "name": "【不可用】非凡影视",
+      "name": "非凡影视",
       "api": "http://ffzy5.tv/api.php/provide/vod?ac=list"
     },
     "tvbox-b88e9a7d64d1b6f6de43459d": {
-      "name": "【不可用】66 360",
+      "name": "66 360",
       "api": "https://360zy.tv/api.php/provide/vod"
     },
     "tvbox-34d17442bc922533c0aebc04": {
-      "name": "【不可用】无尽CC",
+      "name": "无尽CC",
       "api": "https://api.wujinapi.cc/api.php/provide/vod"
     },
     "tvbox-90e7454f02d8b46f1b45635a": {
-      "name": "【不可用】优质资源歪歪兹",
+      "name": "优质资源歪歪兹",
       "api": "https://api.yyzy-tv.vip/inc/api_mac10_all.php"
     },
     "tvbox-a44e553153466fe88df19f38": {
-      "name": "【不可用】接口 猫眼影视",
+      "name": "接口 猫眼影视",
       "api": "https://maoyanzy.com/api.php/provide/vod"
     },
     "tvbox-1762139b6c36f5f15f3a311c": {
-      "name": "【不可用】天涯",
+      "name": "天涯",
       "api": "https://ty.tyyszy5.com/api.php/provide/vod?ac=list"
     },
     "tvbox-fd46d56492b1499d2343f829": {
-      "name": "【不可用】62 秒播",
+      "name": "62 秒播",
       "api": "https://api.zeqaht.com/api.php/provide/vod"
     },
     "tvbox-d35beaa99199aad75ffb3a9b": {
-      "name": "【不可用】63 丫丫",
+      "name": "63 丫丫",
       "api": "https://yayazy2.com/api.php/provide/vod"
     },
     "tvbox-ebc3f498b660108843cf05ef": {
-      "name": "【不可用】36 牛牛",
+      "name": "36 牛牛",
       "api": "https://niuniuzy3.com/api.php/provide/vod"
     },
     "tvbox-e86eec9ebd2867ab9a4c12be": {
-      "name": "【不可用】360 采集",
+      "name": "360 采集",
       "api": "https://360zy.com/api.php/provide/vod"
     },
     "tvbox-bcd6f62ea15b88740bf1128e": {
-      "name": "【不可用】OK资源",
+      "name": "OK资源",
       "api": "http://api.okzyw.net/api.php/provide/vod/from/okm3u8/at/xml"
     },
     "tvbox-97e66eee0051b4370190faa1": {
-      "name": "【不可用】都司资源",
+      "name": "都司资源",
       "api": "http://y.ds05.cn/zyapi.php"
     },
-    "tvbox-9f84c0615646e2dd1da56475": {
-      "name": "【不可用】Clun 在线 茅台 采集",
-      "api": "https://mtzy.me/api.php/provide/vod",
-      "disabled": false
-    },
-    "tvbox-d94c6e05ab018a5c7cf2682f": {
-      "name": "【不可用】官采 采集",
-      "api": "https://cj.jusj.top/api.php/provide/vod?ac=list",
-      "disabled": false
-    },
     "tvbox-dfff5f69688040087c4fa032": {
-      "name": "【不可用】火速资源",
+      "name": "火速资源",
       "api": "https://api.huosuapi.cc/api.php/provide/vod",
       "disabled": false
     },
     "tvbox-99e23eb5ef9bf1b2ee32b40f": {
-      "name": "【不可用】柚子资源",
+      "name": "柚子资源",
       "api": "https://api.yzzy-api.com/inc/api.php",
       "disabled": false
     },
     "hanxiaoquan": {
-      "name": "【不可用】韩小圈",
+      "name": "韩小圈",
       "api": "https://www.jennyhow.com",
       "adapter": "hanxiaoquan",
       "native": {
@@ -391,7 +306,7 @@
       }
     },
     "guipian": {
-      "name": "【不可用】鬼片",
+      "name": "鬼片",
       "api": "https://guipianwu.com",
       "adapter": "guipian",
       "native": {
@@ -488,7 +403,7 @@
       }
     },
     "cinejoy": {
-      "name": "【不可用】Cinejoy",
+      "name": "Cinejoy",
       "api": "https://cinejoy.pk",
       "adapter": "cinejoy",
       "disabled": false,
@@ -520,7 +435,7 @@
       }
     },
     "movy": {
-      "name": "【不可用】Movy",
+      "name": "Movy",
       "api": "https://www.movy.sx",
       "adapter": "movy",
       "disabled": false,
@@ -601,24 +516,109 @@
       }
     },
     "yszzq-156": {
-      "name": "【不可用】速播资源速博CJ",
+      "name": "速播资源速博CJ",
       "api": "https://subocj.com/api.php/provide/vod"
     },
     "yszzq-252": {
-      "name": "【不可用】厂长资源",
+      "name": "厂长资源",
       "api": "https://api.changzhang.tv/api.php/provide/vod/"
     },
     "yszzq-244": {
-      "name": "【不可用】西瓜资源",
+      "name": "西瓜资源",
       "api": "https://caiji.xgzyapi.com/api.php/provide/vod/?ac=list"
     },
     "yszzq-149": {
-      "name": "【不可用】优质资源库",
+      "name": "优质资源库",
       "api": "https://api.yzzy-api.com/inc/api_mac10_all.php"
     },
     "yszzq-221": {
-      "name": "【不可用】天涯影视资源网",
+      "name": "天涯影视资源网",
       "api": "https://tyyszyapi.com/api.php/provide/vod/at/xml/?ac=list/"
+    },
+    "iqiyizyapi.com": {
+      "name": "【不可用】爱奇艺",
+      "api": "https://iqiyizyapi.com/api.php/provide/vod",
+      "detail": "https://iqiyizyapi.com"
+    },
+    "dbzy.tv": {
+      "name": "【不可用】豆瓣资源",
+      "api": "https://caiji.dbzy5.com/api.php/provide/vod",
+      "detail": "https://dbzy.tv"
+    },
+    "wolongzyw.com": {
+      "name": "【不可用】卧龙资源",
+      "api": "https://wolongzyw.com/api.php/provide/vod",
+      "detail": "https://wolongzyw.com"
+    },
+    "p2100.net": {
+      "name": "【不可用】飘零资源",
+      "api": "https://p2100.net/api.php/provide/vod",
+      "detail": "https://p2100.net"
+    },
+    "api_16": {
+      "name": "【不可用】小猫咪资源",
+      "api": "https://zy.xmm.hk/api.php/provide/vod",
+      "detail": "https://zy.xmm.hk"
+    },
+    "api_27": {
+      "name": "【不可用】步步高资源",
+      "api": "https://api.yparse.com/api/json",
+      "detail": ""
+    },
+    "api_47": {
+      "name": "【不可用】魔爪资源",
+      "api": "https://mozhuazy.com/api.php/provide/vod",
+      "detail": "https://mozhuazy.com"
+    },
+    "kauiboziyuan": {
+      "name": "【不可用】快播资源",
+      "api": "https://gayapi.com/api.php/provide/vod",
+      "detail": ""
+    },
+    "huaweiba": {
+      "name": "【不可用】华为吧资源",
+      "api": "https://huawei8.live/api.php/provide/vod",
+      "detail": ""
+    },
+    "taopian": {
+      "name": "【不可用】淘片资源",
+      "api": "https://taopianapi.com/cjapi/sda/vod",
+      "detail": ""
+    },
+    "fengchao": {
+      "name": "【不可用】蜂巢片库",
+      "api": "https://api.fczy888.me/api.php/provide/vod",
+      "detail": ""
+    },
+    "jinmaziyuan2": {
+      "name": "【不可用】金马资源",
+      "api": "https://api.jmzy.com/api.php/provide/vod",
+      "detail": ""
+    },
+    "kauicheziyuan": {
+      "name": "【不可用】快车资源",
+      "api": "https://caiji.kuaichezy.org/api.php/provide",
+      "detail": ""
+    },
+    "qiqiqiqi": {
+      "name": "【不可用】七七影视",
+      "api": "https://www.qiqidys.com/api.php/provide/vod/",
+      "detail": ""
+    },
+    "fantuanyingshi": {
+      "name": "【不可用】饭团影视",
+      "api": "https://www.fantuan.tv/api.php/provide/vod/",
+      "detail": ""
+    },
+    "tvbox-9f84c0615646e2dd1da56475": {
+      "name": "【不可用】Clun 在线 茅台 采集",
+      "api": "https://mtzy.me/api.php/provide/vod",
+      "disabled": false
+    },
+    "tvbox-d94c6e05ab018a5c7cf2682f": {
+      "name": "【不可用】官采 采集",
+      "api": "https://cj.jusj.top/api.php/provide/vod?ac=list",
+      "disabled": false
     },
     "yszzq-192": {
       "name": "【不可用】麒麟资源站全站",

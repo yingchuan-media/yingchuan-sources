@@ -1,6 +1,11 @@
 {
-  "last_checked_at": "2026-11-20T15:31:02+00:00",
+  "last_checked_at": "2026-11-20T15:52:37+00:00",
   "pending": {
+    "iqiyizyapi.com": {
+      "fingerprint": "eb3f4faf1cdb2e79224ff43180876fbb7f98bf52f90658c7944d5c6428681103",
+      "first_failed": "2026-11-20",
+      "last_failed": "2026-11-20"
+    },
     "dbzy.tv": {
       "fingerprint": "9005f43fd437c5fb29af4ba091cadb88aa05257050ef192c25e5e2686a1de8cb",
       "first_failed": "2026-11-19",
@@ -69,11 +74,6 @@
     "tvbox-d94c6e05ab018a5c7cf2682f": {
       "fingerprint": "d1c42444fb397bbcab994489b8c4b422b31c69e7f2c9fe423c839c22053414d4",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-20"
-    },
-    "hanxiaoquan": {
-      "fingerprint": "59f713cf9ebef3d61dc0b9a31d3abffaf3757cbe581254c528a1104923411f19",
-      "first_failed": "2026-11-20",
       "last_failed": "2026-11-20"
     },
     "yszzq-192": {
