@@ -25,42 +25,42 @@
       "name": "无水印资源网",
       "api": "https://api.wsyzy.net/api.php/provide/vod/from/wsym3u8/at/xml/"
     },
-    "tvbox-dfaa8e71bccb3d910803980d": {
-      "name": "43 HG",
-      "api": "https://hong.hgyx.vip/api.php/provide/vod"
-    },
     "www.ryzyw.com": {
-      "name": "【不可用】如意资源",
+      "name": "如意资源",
       "api": "https://cj.rycjapi.com/api.php/provide/vod",
       "detail": "https://www.ryzyw.com"
+    },
+    "api_1": {
+      "name": "1080资源",
+      "api": "https://api.1080zyku.com/inc/api_mac10.php",
+      "detail": "https://api.1080zyku.com"
+    },
+    "tvbox-8bda40c7eb0a44ed19d69658": {
+      "name": "柚子影视",
+      "api": "https://api.yzzy-api.com/inc/api.php/provide/vod/at/xml",
+      "disabled": false
+    },
+    "lovedan.net": {
+      "name": "艾旦影视",
+      "api": "https://lovedan.net/api.php/provide/vod",
+      "detail": "https://lovedan.net"
+    },
+    "tvbox-dfaa8e71bccb3d910803980d": {
+      "name": "【不可用】43 HG",
+      "api": "https://hong.hgyx.vip/api.php/provide/vod"
     },
     "bfzy.tv": {
       "name": "【不可用】暴风资源",
       "api": "https://bfzyapi.com/api.php/provide/vod",
       "detail": "https://bfzy.tv"
     },
-    "api_1": {
-      "name": "【不可用】1080资源",
-      "api": "https://api.1080zyku.com/inc/api_mac10.php",
-      "detail": "https://api.1080zyku.com"
-    },
     "tvbox-a74f697efc5b8180d65982ee": {
       "name": "【不可用】11 暴风",
       "api": "http://by.bfzyapi.com/api.php/provide/vod"
     },
-    "tvbox-8bda40c7eb0a44ed19d69658": {
-      "name": "【不可用】柚子影视",
-      "api": "https://api.yzzy-api.com/inc/api.php/provide/vod/at/xml",
-      "disabled": false
-    },
     "yszzq-251": {
       "name": "【不可用】新芒果资源站",
       "api": "https://caiji.mgzyapi.com/api.php/provide/vod/at/xml/"
-    },
-    "lovedan.net": {
-      "name": "【不可用】艾旦影视",
-      "api": "https://lovedan.net/api.php/provide/vod",
-      "detail": "https://lovedan.net"
     },
     "iqiyizyapi.com": {
       "name": "【不可用】爱奇艺",
