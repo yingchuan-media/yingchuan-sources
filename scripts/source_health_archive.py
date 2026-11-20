@@ -46,7 +46,7 @@ def update_sources(root, documents, rows, checked_at):
             row = by_source[group, key]
             status = source_status(row)
             name = base_source_name(site["name"])
-            site["name"] = name if status == "ok" else UNAVAILABLE_PREFIX + name
+            site["name"] = name if status == "ok" or row["catalog"].message == "检测环境触发浏览器验证，未验证" else UNAVAILABLE_PREFIX + name
             row["name"] = site["name"]
             if status != "unavailable":
                 continue

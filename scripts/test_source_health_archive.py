@@ -80,6 +80,11 @@ class HealthArchiveTests(unittest.TestCase):
         self.publish(10, self.row(cover=health.Outcome("fail", "HTTP 404")))
         self.assertEqual(subscriptions.read_json(self.subscription(self.root))["api_site"]["sample"], self.site)
 
+
+    def test_detection_environment_verification_does_not_mark_source_unavailable(self):
+        self.publish(1, self.row(catalog=health.Outcome("unknown", "检测环境触发浏览器验证，未验证")))
+        self.assertEqual(subscriptions.read_json(self.subscription(self.root))["api_site"]["sample"], self.site)
+
     def test_same_day_missing_day_and_configuration_change(self):
         failure = self.row(catalog=health.Outcome("fail", "HTTP 503"))
         self.publish(1, failure)
