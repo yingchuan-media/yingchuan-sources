@@ -10,12 +10,12 @@
 
 | 分类 | 订阅地址 | 来源数 |
 | --- | --- | ---: |
-| 影视 | [subscriptions/film-tv.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/film-tv.json) | 113 |
+| 影视 | [subscriptions/film-tv.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/film-tv.json) | 84 |
 | 短剧 | [subscriptions/short-drama.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/short-drama.json) | 6 |
 | 动漫 | [subscriptions/animation.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/animation.json) | 3 |
-| 未知 | [subscriptions/unknown.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/unknown.json) | 45 |
+| 未知 | [subscriptions/unknown.json](https://raw.githubusercontent.com/yingchuan-media/yingchuan-sources/main/subscriptions/unknown.json) | 44 |
 
-当前共 **167 项订阅来源，全部默认启用**。数量和检测清单从四份 JSON 逐次生成，随来源新增、移除及名称变更更新。
+当前共 **137 项订阅来源，全部默认启用**。数量和检测清单从四份 JSON 逐次生成，随来源新增、移除及名称变更更新。
 
 <!-- source-inventory:end -->
 
@@ -67,13 +67,13 @@ python -B scripts/test_setup_ffmpeg.py
 
 <!-- source-health:start -->
 
-检测时间：2026-11-20T03:17:05+00:00；共 167 项，四项通过 19 项，含失败 120 项。
+检测时间：2026-11-20T03:17:05+00:00；共 137 项，四项通过 19 项，含失败 96 项。
 
 解码工具：ffmpeg version n9.0.2-17-g2a571b6068-20260930 Copyright (c) 2000-2026 the FFmpeg developers；原生协议核心 3b1d9b0e2e096203cba6156b3aee241033ca4823。延迟为运行节点的目录请求耗时（含 DNS、TLS 与正文），不代表本地延迟。
 
 ✅ 通过 · ❌ 失败 · ⚪ 未验证。封面仅检查 HEAD；播放仅抽样一条线路的第一集和一个片段，首帧通过不保证整片、其他线路、音轨或设备可播。
 
-### 影视（113 项）
+### 影视（84 项）
 
 | 站点 / 稳定键 | 目录 | 封面 | 搜索 | 能否播放 | 目录延迟 |
 | --- | --- | --- | --- | --- | ---: |
@@ -210,7 +210,7 @@ python -B scripts/test_setup_ffmpeg.py
 | 魔都动漫资源采集网 · yszzq-181 | ✅ 有效目录 | ✅ 仅 HEAD 可达 · 269 ms | ✅ 命中抽样条目 · 309 ms | ✅ 抽样首帧 · 2381 ms | 191 ms |
 | 【不可用】青空 · sorani | ✅ 客户端原生目录有效 | ✅ 仅 HEAD 可达 · 378 ms | ✅ 客户端原生搜索命中 · 420 ms | ⚪ 需要来源账号授权 · 363 ms | 580 ms |
 
-### 未知（45 项）
+### 未知（44 项）
 
 | 站点 / 稳定键 | 目录 | 封面 | 搜索 | 能否播放 | 目录延迟 |
 | --- | --- | --- | --- | --- | ---: |
