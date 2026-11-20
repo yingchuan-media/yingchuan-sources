@@ -1,11 +1,6 @@
 {
-  "last_checked_at": "2026-11-20T08:40:19+00:00",
+  "last_checked_at": "2026-11-20T14:24:11+00:00",
   "pending": {
-    "lovedan.net": {
-      "fingerprint": "264db36492b6c3e76d08e821414a74d49da92d30601c20efbf177c9c3bffe9a9",
-      "first_failed": "2026-11-19",
-      "last_failed": "2026-11-20"
-    },
     "dbzy.tv": {
       "fingerprint": "9005f43fd437c5fb29af4ba091cadb88aa05257050ef192c25e5e2686a1de8cb",
       "first_failed": "2026-11-19",
@@ -66,18 +61,8 @@
       "first_failed": "2026-11-19",
       "last_failed": "2026-11-20"
     },
-    "tvbox-bcd6f62ea15b88740bf1128e": {
-      "fingerprint": "28e87501cdea59848fee5b4e6a79b12ec9d3e4eea0e821ca6ea834eae8e3fe0a",
-      "first_failed": "2026-11-20",
-      "last_failed": "2026-11-20"
-    },
     "tvbox-9f84c0615646e2dd1da56475": {
       "fingerprint": "605c6aca06ff21535456c0e161a8038aeca0cfd51f8c5fee846e1df0e25ff63e",
-      "first_failed": "2026-11-19",
-      "last_failed": "2026-11-20"
-    },
-    "tvbox-975219d8af26d677fb17ebaa": {
-      "fingerprint": "a83b824546e08d9a59b15ac219119d04b92c28984cb4f52f8a802aeb93a03513",
       "first_failed": "2026-11-19",
       "last_failed": "2026-11-20"
     },
@@ -86,19 +71,14 @@
       "first_failed": "2026-11-19",
       "last_failed": "2026-11-20"
     },
-    "tvbox-f87a5a4f84ba0188d3863cce": {
-      "fingerprint": "056180643a70b86ad304302c23c4b1fd941685350c6931ad77fae11f2179625a",
-      "first_failed": "2026-11-19",
-      "last_failed": "2026-11-20"
-    },
-    "hanxiaoquan": {
-      "fingerprint": "59f713cf9ebef3d61dc0b9a31d3abffaf3757cbe581254c528a1104923411f19",
+    "cinejoy": {
+      "fingerprint": "c6e3ceef1eb1be390884ee281a73c9e9ff871f812b9e0af5dce1b2032821705d",
       "first_failed": "2026-11-20",
       "last_failed": "2026-11-20"
     },
-    "yszzq-207": {
-      "fingerprint": "080cd6b5e0ad19d268050811a708ee0307e21f31edddada3ace270295416ae53",
-      "first_failed": "2026-11-19",
+    "movy": {
+      "fingerprint": "878caffd47008b6449279ca0398ee90eb4f456ca5e35388c634483efc9b13e91",
+      "first_failed": "2026-11-20",
       "last_failed": "2026-11-20"
     },
     "yszzq-192": {
