@@ -91,11 +91,6 @@
       "first_failed": "2026-11-20",
       "last_failed": "2026-11-20"
     },
-    "dsd": {
-      "fingerprint": "6be2774f6caa228107e440c105b1e5e1d57d823ae4c98bf20a2a0f8a5ed8a779",
-      "first_failed": "2026-11-20",
-      "last_failed": "2026-11-20"
-    },
     "api.wwzy.tv": {
       "fingerprint": "fa471647b4de251295bc8ef68a42af739ba01a41aec0619430039fcbfb2fc080",
       "first_failed": "2026-11-19",

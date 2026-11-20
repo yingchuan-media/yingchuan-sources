@@ -123,6 +123,9 @@ func repositoryHealthStep(ctx context.Context, stage string, budget time.Duratio
 		if errors.Is(err, errSoraniLoginRequired) || errors.Is(err, errSoraniLoginExpired) {
 			outcome.Status, outcome.Message = "unknown", "需要来源账号授权"
 		}
+		if text := err.Error(); strings.Contains(text, "HTTP 403") && strings.Contains(text, "浏览器验证") {
+			outcome.Status, outcome.Message = "unknown", "检测环境触发浏览器验证，未验证"
+		}
 	}
 	return outcome
 }
