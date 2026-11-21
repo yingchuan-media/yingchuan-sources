@@ -102,11 +102,6 @@
       "api": "https://api.ffzyapi.com/api.php/provide/vod",
       "detail": "https://cj.ffzyapi.com"
     },
-    "zuida.xyz": {
-      "name": "最大资源",
-      "api": "https://api.zuidapi.com/api.php/provide/vod",
-      "detail": "https://zuida.xyz"
-    },
     "wujinzy.me": {
       "name": "无尽资源",
       "api": "https://api.wujinapi.me/api.php/provide/vod",
@@ -267,43 +262,6 @@
       "name": "柚子资源",
       "api": "https://api.yzzy-api.com/inc/api.php",
       "disabled": false
-    },
-    "hanxiaoquan": {
-      "name": "韩小圈",
-      "api": "https://www.jennyhow.com",
-      "adapter": "hanxiaoquan",
-      "native": {
-        "version": 1,
-        "description": "韩剧 · 韩国电影 · 综艺动漫",
-        "warning": "仅支持 jennyhow.com 或 www.jennyhow.com；播放链接仍按原站协议校验",
-        "aliases": [
-          "hanxiaoquan",
-          "jennyhow.com",
-          "www.jennyhow.com"
-        ],
-        "allowedHosts": [
-          "jennyhow.com",
-          "www.jennyhow.com"
-        ],
-        "categories": [
-          {
-            "id": "1",
-            "name": "最新韩剧"
-          },
-          {
-            "id": "2",
-            "name": "韩国电影"
-          },
-          {
-            "id": "3",
-            "name": "韩国综艺"
-          },
-          {
-            "id": "4",
-            "name": "韩国动漫"
-          }
-        ]
-      }
     },
     "guipian": {
       "name": "鬼片",
@@ -536,9 +494,51 @@
       "api": "https://tyyszyapi.com/api.php/provide/vod/at/xml/?ac=list/"
     },
     "iqiyizyapi.com": {
-      "name": "【不可用】爱奇艺",
+      "name": "爱奇艺",
       "api": "https://iqiyizyapi.com/api.php/provide/vod",
       "detail": "https://iqiyizyapi.com"
+    },
+    "zuida.xyz": {
+      "name": "【不可用】最大资源",
+      "api": "https://api.zuidapi.com/api.php/provide/vod",
+      "detail": "https://zuida.xyz"
+    },
+    "hanxiaoquan": {
+      "name": "【不可用】韩小圈",
+      "api": "https://www.jennyhow.com",
+      "adapter": "hanxiaoquan",
+      "native": {
+        "version": 1,
+        "description": "韩剧 · 韩国电影 · 综艺动漫",
+        "warning": "仅支持 jennyhow.com 或 www.jennyhow.com；播放链接仍按原站协议校验",
+        "aliases": [
+          "hanxiaoquan",
+          "jennyhow.com",
+          "www.jennyhow.com"
+        ],
+        "allowedHosts": [
+          "jennyhow.com",
+          "www.jennyhow.com"
+        ],
+        "categories": [
+          {
+            "id": "1",
+            "name": "最新韩剧"
+          },
+          {
+            "id": "2",
+            "name": "韩国电影"
+          },
+          {
+            "id": "3",
+            "name": "韩国综艺"
+          },
+          {
+            "id": "4",
+            "name": "韩国动漫"
+          }
+        ]
+      }
     },
     "dbzy.tv": {
       "name": "【不可用】豆瓣资源",
