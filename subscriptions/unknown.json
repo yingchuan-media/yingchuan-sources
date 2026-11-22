@@ -173,11 +173,6 @@
       "api": "https://api.xiaojizy.live/provide/vod",
       "detail": "https://xiaojizy.live"
     },
-    "hsckzy.xyz": {
-      "name": "黄色仓库",
-      "api": "https://hsckzy.xyz/api.php/provide/vod",
-      "detail": "https://hsckzy.xyz"
-    },
     "jkunzyapi.com": {
       "name": "JKUN资源",
       "api": "https://jkunzyapi.com/api.php/provide/vod",
@@ -275,6 +270,11 @@
     "yszzq-254": {
       "name": "星夜资源站",
       "api": "https://xyezy.com/api.php/provide/vod/?ac=list"
+    },
+    "hsckzy.xyz": {
+      "name": "【不可用】黄色仓库",
+      "api": "https://hsckzy.xyz/api.php/provide/vod",
+      "detail": "https://hsckzy.xyz"
     },
     "api.wwzy.tv": {
       "name": "【不可用】旺旺资源",
