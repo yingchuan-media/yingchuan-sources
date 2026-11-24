@@ -1,135 +1,145 @@
 {
-  "last_checked_at": "2026-11-23T02:48:05+00:00",
+  "last_checked_at": "2026-11-24T06:05:24+00:00",
   "pending": {
     "hanxiaoquan": {
       "fingerprint": "59f713cf9ebef3d61dc0b9a31d3abffaf3757cbe581254c528a1104923411f19",
       "first_failed": "2026-11-21",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "dbzy.tv": {
       "fingerprint": "9005f43fd437c5fb29af4ba091cadb88aa05257050ef192c25e5e2686a1de8cb",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "wolongzyw.com": {
       "fingerprint": "e517701a996db7d0637bf50337a7f3c5ca0387135745753ae4ba7ad5a1fbe29d",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "api_16": {
       "fingerprint": "b403479e3f613aa23bd43724651648bac95de19fa6b5a2581572e26e11a37e46",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "api_47": {
       "fingerprint": "584648027bac332d20666888f13d262e7df6e13e66c55ba606c3594ddf3648cb",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "kauiboziyuan": {
       "fingerprint": "10f0bf30a55c1d8123db4b3cf90fca7f030c0c95a988fa9249d90d39d94f67d5",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "huaweiba": {
       "fingerprint": "c2a6250a5613bc8412c7cbd8152068c031493376104ba1e1d5519158d60a7dd2",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "taopian": {
       "fingerprint": "4b97f7c8c6597aba6cf971abf93ae1e1caa4187ff87b49e4a5c326318d4ae6f3",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "fengchao": {
       "fingerprint": "e18e82e1f57f3124a2142c988fa2709b9b776ab2f3ed0dda5f070370e4c70257",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "jinmaziyuan2": {
       "fingerprint": "69e6652568334bef3866e8b95d32b9c8e8e6496bbd6edd0cf45b94217402395f",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "kauicheziyuan": {
       "fingerprint": "3fc90ebbcaabbf43cb726b5e19794d3562c2374ac4bbe8051874e8f38ffdd537",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "qiqiqiqi": {
       "fingerprint": "4ad1d5e0900cf4159ea53791ff419a2a62a9ea5103de1697d7daabada75faaa9",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "fantuanyingshi": {
       "fingerprint": "701ae847f92bbdd4a0a1d5153c60d6663d1bf60f0e96851e87e32054627b04bf",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "tvbox-9f84c0615646e2dd1da56475": {
       "fingerprint": "605c6aca06ff21535456c0e161a8038aeca0cfd51f8c5fee846e1df0e25ff63e",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "tvbox-d94c6e05ab018a5c7cf2682f": {
       "fingerprint": "d1c42444fb397bbcab994489b8c4b422b31c69e7f2c9fe423c839c22053414d4",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "yszzq-192": {
       "fingerprint": "736956f663842e5096c00ace536c8a6c472f19e1160adf3b9ec9303a0de702df",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "yszzq-112": {
       "fingerprint": "cd20030f9fb136042a66f8d19657967b7b5b9fa6b7805c1c57b3647487d73cc3",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
+    },
+    "jinguoduanju": {
+      "fingerprint": "3a5b2f138a677af26a2d11db8f7dd4116476c713323698e135e01fd8058ee82c",
+      "first_failed": "2026-11-24",
+      "last_failed": "2026-11-24"
+    },
+    "hsckzy.xyz": {
+      "fingerprint": "daf08624237988c500ed6b296cf42051b500f98c9f09d686644d97a00331cd74",
+      "first_failed": "2026-11-24",
+      "last_failed": "2026-11-24"
     },
     "api.wwzy.tv": {
       "fingerprint": "fa471647b4de251295bc8ef68a42af739ba01a41aec0619430039fcbfb2fc080",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "api_21": {
       "fingerprint": "4c4e61292f904be032e644f3bc0fc453f0277f39b6647be87a0635b1d3691601",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "aiduanjucc": {
       "fingerprint": "5a4bb7b196bffbe32bc177978bed68553a383adb292114bc43852a430ac8894a",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "91jpzyw.com": {
       "fingerprint": "711a918d43207d90e2b9050b9626ea62c238037698664048e91be462186e5ea1",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "lbapiby.com": {
       "fingerprint": "f2ae82d90d174501850826416abb60a4552392b7879c4c1567cff8c5f3b7dc74",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "www.yyzywcj.com": {
       "fingerprint": "2bc2180a9d772c53fb33cd516176ecc7b2e5430bd4d028921e692fad820a9774",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "xzytv.com": {
       "fingerprint": "1fdf9a7f9519c01b449bea4f5eb45e1028b1b002e9a225676c79032ae76ac222",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "api.bwzym3u8.com": {
       "fingerprint": "cf3b16402f99efa9aea05bce305ba726091c63d1198b213a5ac3b90996ace50b",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     },
     "xibaocaiji": {
       "fingerprint": "d4cfdbec5863cdf33319a16c478a0b7bdfc87eaa8c5ada31e56063abe2279334",
       "first_failed": "2026-11-19",
-      "last_failed": "2026-11-23"
+      "last_failed": "2026-11-24"
     }
   },
   "archived": []

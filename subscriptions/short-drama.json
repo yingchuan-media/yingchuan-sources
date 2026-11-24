@@ -200,7 +200,7 @@
       }
     },
     "jinguoduanju": {
-      "name": "禁果短剧",
+      "name": "【不可用】禁果短剧",
       "api": "https://jinguoduanju.app",
       "adapter": "jinguoduanju",
       "native": {
