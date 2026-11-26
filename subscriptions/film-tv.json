@@ -499,8 +499,12 @@
       "api": "https://api.zuidapi.com/api.php/provide/vod",
       "detail": "https://zuida.xyz"
     },
+    "yszzq-251": {
+      "name": "新芒果资源站",
+      "api": "https://caiji.mgzyapi.com/api.php/provide/vod/at/xml/"
+    },
     "hanxiaoquan": {
-      "name": "韩小圈",
+      "name": "【不可用】韩小圈",
       "api": "https://www.jennyhow.com",
       "adapter": "hanxiaoquan",
       "native": {
@@ -535,10 +539,6 @@
           }
         ]
       }
-    },
-    "yszzq-251": {
-      "name": "【不可用】新芒果资源站",
-      "api": "https://caiji.mgzyapi.com/api.php/provide/vod/at/xml/"
     },
     "p2100.net": {
       "name": "【不可用】飘零资源",
