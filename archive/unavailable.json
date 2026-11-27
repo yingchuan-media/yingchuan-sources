@@ -1,40 +1,30 @@
 {
-  "last_checked_at": "2026-11-26T04:12:19+00:00",
+  "last_checked_at": "2026-11-27T04:18:36+00:00",
   "pending": {
-    "hanxiaoquan": {
-      "fingerprint": "59f713cf9ebef3d61dc0b9a31d3abffaf3757cbe581254c528a1104923411f19",
-      "first_failed": "2026-11-26",
-      "last_failed": "2026-11-26"
+    "lovedan.net": {
+      "fingerprint": "264db36492b6c3e76d08e821414a74d49da92d30601c20efbf177c9c3bffe9a9",
+      "first_failed": "2026-11-27",
+      "last_failed": "2026-11-27"
     },
     "huangguoai": {
       "fingerprint": "d4bf750a6a8f68075e69981013ba9891f565fe9baaba23cd54aefac33f31a717",
       "first_failed": "2026-11-25",
-      "last_failed": "2026-11-26"
+      "last_failed": "2026-11-27"
     },
-    "api_60": {
-      "fingerprint": "77620c33cff7f0cc006d94335f7aee6184f0e4ecf7ecf9ebb3a99943045b52a3",
-      "first_failed": "2026-11-26",
-      "last_failed": "2026-11-26"
+    "huangguo-video": {
+      "fingerprint": "c57e30b28981b011b023aa0e6219607398c20667cb0a6ff2feb5eccca9d3dfe7",
+      "first_failed": "2026-11-27",
+      "last_failed": "2026-11-27"
     },
-    "api_63": {
-      "fingerprint": "eab3eac320b478ad5463565e209f76e330ae928dae66b6aab22daf7ee24235f0",
-      "first_failed": "2026-11-26",
-      "last_failed": "2026-11-26"
+    "huangseziy": {
+      "fingerprint": "b8b610fbfa26848dd95c94b2b6508a280d6341d47ee1963219dc8668e88e1cff",
+      "first_failed": "2026-11-27",
+      "last_failed": "2026-11-27"
     },
-    "api_65": {
-      "fingerprint": "c4c0aa629a8c983520ad28b2aeb11064dfe969781f241fc1c7117d015f9157e6",
-      "first_failed": "2026-11-26",
-      "last_failed": "2026-11-26"
-    },
-    "api_70": {
-      "fingerprint": "089372e5f4e2189a1431ed29c401409d4be1d8b027db9e94ed592318b1e14b2a",
-      "first_failed": "2026-11-26",
-      "last_failed": "2026-11-26"
-    },
-    "api_72": {
-      "fingerprint": "341a9b613348eb4e2618f9e30695a627f929ff01a82c36985d4b7df0a6cedb7a",
-      "first_failed": "2026-11-26",
-      "last_failed": "2026-11-26"
+    "hsckzy.xyz": {
+      "fingerprint": "daf08624237988c500ed6b296cf42051b500f98c9f09d686644d97a00331cd74",
+      "first_failed": "2026-11-27",
+      "last_failed": "2026-11-27"
     }
   },
   "archived": [

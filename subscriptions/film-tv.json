@@ -40,11 +40,6 @@
       "api": "https://api.yzzy-api.com/inc/api.php/provide/vod/at/xml",
       "disabled": false
     },
-    "lovedan.net": {
-      "name": "艾旦影视",
-      "api": "https://lovedan.net/api.php/provide/vod",
-      "detail": "https://lovedan.net"
-    },
     "bfzy.tv": {
       "name": "暴风资源",
       "api": "https://bfzyapi.com/api.php/provide/vod",
@@ -504,7 +499,7 @@
       "api": "https://caiji.mgzyapi.com/api.php/provide/vod/at/xml/"
     },
     "hanxiaoquan": {
-      "name": "【不可用】韩小圈",
+      "name": "韩小圈",
       "api": "https://www.jennyhow.com",
       "adapter": "hanxiaoquan",
       "native": {
@@ -539,6 +534,11 @@
           }
         ]
       }
+    },
+    "lovedan.net": {
+      "name": "【不可用】艾旦影视",
+      "api": "https://lovedan.net/api.php/provide/vod",
+      "detail": "https://lovedan.net"
     },
     "p2100.net": {
       "name": "【不可用】飘零资源",

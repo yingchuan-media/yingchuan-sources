@@ -108,22 +108,6 @@
         "warning": "需要支持 beabox 适配器的新版客户端。仅对配置允许的 HTTPS 域名切换或发现镜像，新增域名需更新订阅并确认。不绕过登录、付费、年龄确认或访问拒绝。当前仅完成合成协议验证，特殊封面封包仅用合成资料验证，未验证真实站源播放。"
       }
     },
-    "huangguo-video": {
-      "name": "黄果视频",
-      "api": "https://huangguo.video",
-      "adapter": "huangguo-video",
-      "native": {
-        "version": 1,
-        "description": "视频剧集",
-        "aliases": [
-          "huangguo-video",
-          "huangguo.video"
-        ],
-        "allowedHosts": [
-          "huangguo.video"
-        ]
-      }
-    },
     "cloudfront": {
       "name": "黄果旧版",
       "api": "https://d2pypzndaqisk.cloudfront.net",
@@ -218,11 +202,6 @@
       "api": "https://aosikazy.com/api.php/provide/vod",
       "detail": "https://aosikazy.com"
     },
-    "huangseziy": {
-      "name": "黄色资源",
-      "api": "https://hsckzy888.com/api.php/provide/vod",
-      "detail": ""
-    },
     "heitao": {
       "name": "黑桃",
       "api": "https://heitaodj.com",
@@ -246,35 +225,56 @@
       "name": "星夜资源站",
       "api": "https://xyezy.com/api.php/provide/vod/?ac=list"
     },
-    "hsckzy.xyz": {
-      "name": "黄色仓库",
-      "api": "https://hsckzy.xyz/api.php/provide/vod",
-      "detail": "https://hsckzy.xyz"
-    },
     "api_60": {
-      "name": "【不可用】淫水机资源",
+      "name": "淫水机资源",
       "api": "https://www.xrbsp.com/api/json.php",
       "detail": "https://www.xrbsp.com"
     },
     "api_63": {
-      "name": "【不可用】白嫖资源",
+      "name": "白嫖资源",
       "api": "https://www.kxgav.com/api/json.php",
       "detail": "https://www.kxgav.com"
     },
     "api_65": {
-      "name": "【不可用】美少女资源",
+      "name": "美少女资源",
       "api": "https://www.msnii.com/api/json.php",
       "detail": "https://www.msnii.com"
     },
     "api_70": {
-      "name": "【不可用】香奶儿资源",
+      "name": "香奶儿资源",
       "api": "https://www.gdlsp.com/api/json.php",
       "detail": "https://www.gdlsp.com"
     },
     "api_72": {
-      "name": "【不可用】黄AV资源",
+      "name": "黄AV资源",
       "api": "https://www.pgxdy.com/api/json.php",
       "detail": "https://www.pgxdy.com"
+    },
+    "huangguo-video": {
+      "name": "【不可用】黄果视频",
+      "api": "https://huangguo.video",
+      "adapter": "huangguo-video",
+      "native": {
+        "version": 1,
+        "description": "视频剧集",
+        "aliases": [
+          "huangguo-video",
+          "huangguo.video"
+        ],
+        "allowedHosts": [
+          "huangguo.video"
+        ]
+      }
+    },
+    "huangseziy": {
+      "name": "【不可用】黄色资源",
+      "api": "https://hsckzy888.com/api.php/provide/vod",
+      "detail": ""
+    },
+    "hsckzy.xyz": {
+      "name": "【不可用】黄色仓库",
+      "api": "https://hsckzy.xyz/api.php/provide/vod",
+      "detail": "https://hsckzy.xyz"
     }
   }
 }
