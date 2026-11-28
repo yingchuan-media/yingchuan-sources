@@ -61,51 +61,6 @@
         "playbackLine": "free"
       }
     },
-    "yeguo": {
-      "name": "野果",
-      "api": "https://analyze.buxefaex.cc",
-      "adapter": "yeguo",
-      "native": {
-        "version": 1,
-        "description": "分类短剧 · 在线搜索",
-        "warning": "入口支持已识别的 buxefaex.cc、fzchosdi.cc、lwblvxvy.cc 活动域名；接口留空时从公开模块发现，入口失效时尝试已识别备用站点",
-        "aliases": [
-          "yeguo",
-          "ygdj7.com",
-          "www.ygdj7.com",
-          "ygdj15.com",
-          "www.ygdj15.com",
-          "analyze.buxefaex.cc",
-          "delta.ygrwdsgt.cc",
-          "yeguodj.com",
-          "www.yeguodj.com"
-        ],
-        "allowedSuffixes": [
-          ".buxefaex.cc",
-          ".fzchosdi.cc",
-          ".lwblvxvy.cc"
-        ],
-        "transitSites": [
-          "https://ygdj15.com",
-          "https://ygdj7.com"
-        ],
-        "seedWords": [
-          "analyze",
-          "ability",
-          "abandon"
-        ],
-        "allowedHosts": [
-          "ygdj7.com",
-          "www.ygdj7.com",
-          "ygdj15.com",
-          "www.ygdj15.com",
-          "analyze.buxefaex.cc",
-          "delta.ygrwdsgt.cc",
-          "yeguodj.com",
-          "www.yeguodj.com"
-        ]
-      }
-    },
     "jinguo": {
       "name": "禁果",
       "api": "https://d1wyuxwdrlykj1.cloudfront.net",
@@ -185,6 +140,51 @@
             "id": "heat",
             "name": "热度"
           }
+        ]
+      }
+    },
+    "yeguo": {
+      "name": "【不可用】野果",
+      "api": "https://analyze.buxefaex.cc",
+      "adapter": "yeguo",
+      "native": {
+        "version": 1,
+        "description": "分类短剧 · 在线搜索",
+        "warning": "入口支持已识别的 buxefaex.cc、fzchosdi.cc、lwblvxvy.cc 活动域名；接口留空时从公开模块发现，入口失效时尝试已识别备用站点",
+        "aliases": [
+          "yeguo",
+          "ygdj7.com",
+          "www.ygdj7.com",
+          "ygdj15.com",
+          "www.ygdj15.com",
+          "analyze.buxefaex.cc",
+          "delta.ygrwdsgt.cc",
+          "yeguodj.com",
+          "www.yeguodj.com"
+        ],
+        "allowedSuffixes": [
+          ".buxefaex.cc",
+          ".fzchosdi.cc",
+          ".lwblvxvy.cc"
+        ],
+        "transitSites": [
+          "https://ygdj15.com",
+          "https://ygdj7.com"
+        ],
+        "seedWords": [
+          "analyze",
+          "ability",
+          "abandon"
+        ],
+        "allowedHosts": [
+          "ygdj7.com",
+          "www.ygdj7.com",
+          "ygdj15.com",
+          "www.ygdj15.com",
+          "analyze.buxefaex.cc",
+          "delta.ygrwdsgt.cc",
+          "yeguodj.com",
+          "www.yeguodj.com"
         ]
       }
     },

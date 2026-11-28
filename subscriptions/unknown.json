@@ -251,7 +251,7 @@
       "detail": "https://www.pgxdy.com"
     },
     "huangguo-video": {
-      "name": "【不可用】黄果视频",
+      "name": "黄果视频",
       "api": "https://huangguo.video",
       "adapter": "huangguo-video",
       "native": {
@@ -267,12 +267,12 @@
       }
     },
     "huangseziy": {
-      "name": "【不可用】黄色资源",
+      "name": "黄色资源",
       "api": "https://hsckzy888.com/api.php/provide/vod",
       "detail": ""
     },
     "hsckzy.xyz": {
-      "name": "【不可用】黄色仓库",
+      "name": "黄色仓库",
       "api": "https://hsckzy.xyz/api.php/provide/vod",
       "detail": "https://hsckzy.xyz"
     }

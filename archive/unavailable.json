@@ -1,30 +1,15 @@
 {
-  "last_checked_at": "2026-11-27T04:18:36+00:00",
+  "last_checked_at": "2026-11-28T03:56:52+00:00",
   "pending": {
-    "lovedan.net": {
-      "fingerprint": "264db36492b6c3e76d08e821414a74d49da92d30601c20efbf177c9c3bffe9a9",
-      "first_failed": "2026-11-27",
-      "last_failed": "2026-11-27"
+    "yeguo": {
+      "fingerprint": "8411dba99aff91425a57f15dc449f8fdc9edb00790c7ab45ad48ba193102bafb",
+      "first_failed": "2026-11-28",
+      "last_failed": "2026-11-28"
     },
     "huangguoai": {
       "fingerprint": "d4bf750a6a8f68075e69981013ba9891f565fe9baaba23cd54aefac33f31a717",
       "first_failed": "2026-11-25",
-      "last_failed": "2026-11-27"
-    },
-    "huangguo-video": {
-      "fingerprint": "c57e30b28981b011b023aa0e6219607398c20667cb0a6ff2feb5eccca9d3dfe7",
-      "first_failed": "2026-11-27",
-      "last_failed": "2026-11-27"
-    },
-    "huangseziy": {
-      "fingerprint": "b8b610fbfa26848dd95c94b2b6508a280d6341d47ee1963219dc8668e88e1cff",
-      "first_failed": "2026-11-27",
-      "last_failed": "2026-11-27"
-    },
-    "hsckzy.xyz": {
-      "fingerprint": "daf08624237988c500ed6b296cf42051b500f98c9f09d686644d97a00331cd74",
-      "first_failed": "2026-11-27",
-      "last_failed": "2026-11-27"
+      "last_failed": "2026-11-28"
     }
   },
   "archived": [
